@@ -1,0 +1,75 @@
+<group name="Hoisting &amp; Invoking">
+  <question id="13000">
+    <body>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      function f () { return g() + 10; }
+
+      var g = function () { return 10; }
+
+      var result = f();
+      ```
+    </body>
+    <choice-group>
+      <choice>10</choice>
+      <choice answer>20</choice>
+      <choice>None of the above. This code throws an error</choice>
+    </choice-group>
+  </question>
+
+  <question id="13001">
+    <body>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      var result = f();
+
+      function f () { return g() + 10; }
+
+      var g = function () { return 10; }
+      ```
+    </body>
+    <choice-group>
+      <choice>10</choice>
+      <choice>20</choice>
+      <choice answer>None of the above. This code throws an error</choice>
+    </choice-group>
+  </question>
+
+  <question id="13002">
+    <body>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      var result = f();
+
+      function f () { return 10; }
+
+      var g = function () { return 10; }
+      ```
+    </body>
+    <choice-group>
+      <choice answer>10</choice>
+      <choice>20</choice>
+      <choice>None of the above. This code throws an error</choice>
+    </choice-group>
+  </question>
+</group>
+
+<question id="13003">
+  <body>
+    After the following code runs, what will be the value of `result`?
+
+    ```js
+    var result = x;
+    var x = 10;
+    ```
+  </body>
+  <choice-group>
+    <choice>10</choice>
+    <choice>null</choice>
+    <choice>undefined</choice>
+    <choice>None of the above. This code throws an error</choice>
+  </choice-group>
+</question>

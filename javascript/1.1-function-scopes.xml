@@ -1,0 +1,211 @@
+
+<question id="11000">
+  <body>
+    After the following code runs, what will be the value of `result`?
+
+    ```js
+    var x = 10;
+    function foo () {
+      return x + 2;
+    }
+
+    var result = foo();
+    ```
+  </body>
+  <choice-group>
+    <choice correct>10</choice>
+    <choice>12</choice>
+  </choice-group>
+</question>
+
+<group name="Single Function Scope">
+  <question id="11001">
+    <body>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      var x = 10;
+      function foo () {
+        var x = 20;
+      }
+      foo();
+      var result = x;
+      ```
+    </body>
+    <choice-group>
+      <choice correct>10</choice>
+      <choice>20</choice>
+    </choice-group>
+  </question>
+
+  <question id="11002">
+    <body>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      var x = 10;
+      function foo () {
+        x = 20;
+      }
+      foo();
+      var result = x;
+      ```
+    </body>
+    <choice-group>
+      <choice>10</choice>
+      <choice correct>20</choice>
+    </choice-group>
+  </question>
+</group>
+
+<group name="Multiple Functions">
+  <question id="11003">
+    <body>
+      When the `go` function runs, what will be the value of `result`?
+
+      ```js
+      var x = 10;
+      function getValue () {
+        var x = 20;
+        return x;
+      }
+      function go () {
+        x = 30;
+        var result = getValue();
+      }
+      go();
+      ```
+    </body>
+    <choice-group>
+      <choice>10</choice>
+      <choice correct>20</choice>
+      <choice>30</choice>
+    </choice-group>
+  </question>
+
+  <question id="11004">
+    <body>
+      When the `go` function runs, what will be the value of `result`?
+
+      ```js
+      var x = 10;
+      function getValue () {
+        x = 20;
+        return x;
+      }
+      function go () {
+        x = 30;
+        var result = getValue();
+      }
+      go();
+      ```
+    </body>
+    <choice-group>
+      <choice>10</choice>
+      <choice correct>20</choice>
+      <choice>30</choice>
+    </choice-group>
+  </question>
+</group>
+
+<group name="Nested Function Scopes">
+  <question id="11005">
+    <content>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      var x = 10;
+      function foo () {
+        var x = 20;
+        function bar () {
+          var x = 30;
+        }
+        bar();
+        return x;
+      }
+
+      var result = foo()
+      ```
+    </content>
+    <choice-group>
+      <choice>10</choice>
+      <choice correct>20</choice>
+      <choice>30</choice>
+    </choice-group>
+  </question>
+
+  <question id="11006">
+    <content>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      var x = 10;
+      function foo () {
+        var x = 20;
+        function bar () {
+          x = 30;
+        }
+        bar();
+        return x;
+      }
+
+      var result = foo()
+      ```
+    </content>
+    <choice-group>
+      <choice>10</choice>
+      <choice>20</choice>
+      <choice correct>30</choice>
+    </choice-group>
+  </question>
+
+  <question id="11007">
+    <content>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      var x = 10;
+      function foo () {
+        x = 20;
+        function bar () {
+          x = 30;
+        }
+        bar();
+        return x;
+      }
+
+      var result = foo()
+      ```
+    </content>
+    <choice-group>
+      <choice>10</choice>
+      <choice>20</choice>
+      <choice correct>30</choice>
+    </choice-group>
+  </question>
+
+  <question id="11008">
+    <content>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      var x = 10;
+      function foo () {
+        x = 20;
+        function bar () {
+          var x = 30;
+        }
+        bar();
+        return x;
+      }
+
+      var result = foo()
+      ```
+    </content>
+    <choice-group>
+      <choice>10</choice>
+      <choice>20</choice>
+      <choice correct>30</choice>
+    </choice-group>
+  </question>
+</group>

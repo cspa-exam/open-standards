@@ -1,0 +1,231 @@
+<group name="Primitive Parameters">
+  <question id="21000">
+    <body>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      var x = 10;
+
+      function foo (y) {
+        y = 20;
+      }
+
+      foo(x);
+      var result = x;
+      ```
+    </body>
+    <choice-group>
+      <choice answer>10</choice>
+      <choice>20</choice>
+      <choice>30</choice>
+      <choice>None of the above. This code throws an error</choice>
+    </choice-group>
+  </question>
+
+  <question id="21001">
+    <body>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      var x = 10;
+
+      function f (y) {
+        y += 20;
+      }
+
+      f(x);
+      var result = x;
+      ```
+    </body>
+    <choice-group>
+      <choice answer>10</choice>
+      <choice>20</choice>
+      <choice>30</choice>
+      <choice>None of the above. This code throws an error</choice>
+    </choice-group>
+  </question>
+
+  <question id="21002">
+    <body>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      var x = 'a';
+
+      function f (y) {
+        y += 'b';
+      }
+
+      f(x);
+      var result = x;
+      ```
+    </body>
+    <choice-group>
+      <choice answer>"a"</choice>
+      <choice>"ab"</choice>
+      <choice>None of the above. This code throws an error</choice>
+    </choice-group>
+  </question>
+</group>
+
+<group name="Object Parameters">
+  <question id="21003">
+    <body>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      var obj = { x: 10 };
+
+      function foo (o) {
+        o = { x: 20 };
+      }
+      foo();
+      var result = obj.x;
+      ```
+    </body>
+    <choice-group>
+      <choice answer>10</choice>
+      <choice>20</choice>
+      <choice>undefined</choice>
+    </choice-group>
+  </question>
+
+  <question id="21004">
+    <body>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      var obj = { x: 10 };
+
+      function foo (o) {
+        o.x = 20;
+      }
+      foo();
+      var result = obj.x;
+      ```
+    </body>
+    <choice-group>
+      <choice>10</choice>
+      <choice answer>20</choice>
+      <choice>undefined</choice>
+    </choice-group>
+  </question>
+</group>
+
+<group name="Array Parameters">
+  <question id="21005">
+    <body>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      var arr = [10, 20];
+
+      function foo (a) {
+        a = [10, 20, 30];
+      }
+
+      foo();
+      var result = arr;
+      ```
+    </body>
+    <choice-group>
+      <choice answer>[10, 20]</choice>
+      <choice>[10, 20, 30]</choice>
+      <choice>undefined</choice>
+    </choice-group>
+  </question>
+
+  <question id="21006">
+    <body>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      var arr = [10, 20];
+
+      function foo (a) {
+        a.push(30);
+      }
+
+      foo();
+      var result = arr.length;
+      ```
+    </body>
+    <choice-group>
+      <choice>[10, 20]</choice>
+      <choice answer>[10, 20, 30]</choice>
+      <choice>undefined</choice>
+    </choice-group>
+  </question>
+
+  <question id="21007">
+    <body>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      var arr = [10, 20];
+
+      function foo (a) {
+        a.concat([30]);
+      }
+
+      foo();
+      var result = arr.length;
+      ```
+    </body>
+    <choice-group>
+      <choice answer>[10, 20]</choice>
+      <choice>[10, 20, 30]</choice>
+      <choice>undefined</choice>
+    </choice-group>
+  </question>
+</group>
+
+<question id="21008">
+  <body>
+    After the following code runs, what will be the value of `result`?
+
+    ```js
+    var y = 20;
+
+    var foo (x, y) {
+      return y;
+    }
+    var result = foo(30);
+    ```
+  </body>
+  <choice-group>
+    <choice>20</choice>
+    <choice>30</choice>
+    <choice>null</choice>
+    <choice>undefined</choice>
+    <choice>None of the above. This code throws an error</choice>
+  </choice-group>
+</question>
+
+<group name="Function References">
+  <question id="21009">
+    <body>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      var g = function () { return 10; };
+
+      function foo (f) {
+        f = function () { return 20; };
+        return f();
+      }
+
+      foo(g);
+
+      var result = g();
+      ```
+    </body>
+    <choice-group>
+      <choice>20</choice>
+      <choice>30</choice>
+      <choice>null</choice>
+      <choice>undefined</choice>
+      <choice>None of the above. This code throws an error</choice>
+    </choice-group>
+  </question>
+</group>
