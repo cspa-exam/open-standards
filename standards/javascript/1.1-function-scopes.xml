@@ -1,22 +1,23 @@
+<group name="basic">
+  <question id="11000">
+    <body>
+      After the following code runs, what will be the value of `result`?
 
-<question id="11000">
-  <body>
-    After the following code runs, what will be the value of `result`?
+      ```js
+      var x = 10;
+      function foo () {
+        return x + 2;
+      }
 
-    ```js
-    var x = 10;
-    function foo () {
-      return x + 2;
-    }
-
-    var result = foo();
-    ```
-  </body>
-  <choice-group>
-    <choice correct>10</choice>
-    <choice>12</choice>
-  </choice-group>
-</question>
+      var result = foo();
+      ```
+    </body>
+    <choice-group>
+      <choice answer="answer">10</choice>
+      <choice>12</choice>
+    </choice-group>
+  </question>
+</group>
 
 <group name="Single Function Scope">
   <question id="11001">
@@ -33,7 +34,7 @@
       ```
     </body>
     <choice-group>
-      <choice correct>10</choice>
+      <choice answer="answer">10</choice>
       <choice>20</choice>
     </choice-group>
   </question>
@@ -53,7 +54,7 @@
     </body>
     <choice-group>
       <choice>10</choice>
-      <choice correct>20</choice>
+      <choice answer="answer">20</choice>
     </choice-group>
   </question>
 </group>
@@ -78,7 +79,7 @@
     </body>
     <choice-group>
       <choice>10</choice>
-      <choice correct>20</choice>
+      <choice answer="answer">20</choice>
       <choice>30</choice>
     </choice-group>
   </question>
@@ -102,7 +103,7 @@
     </body>
     <choice-group>
       <choice>10</choice>
-      <choice correct>20</choice>
+      <choice answer="answer">20</choice>
       <choice>30</choice>
     </choice-group>
   </question>
@@ -110,7 +111,7 @@
 
 <group name="Nested Function Scopes">
   <question id="11005">
-    <content>
+    <body>
       After the following code runs, what will be the value of `result`?
 
       ```js
@@ -126,16 +127,16 @@
 
       var result = foo()
       ```
-    </content>
+    </body>
     <choice-group>
       <choice>10</choice>
-      <choice correct>20</choice>
+      <choice answer="answer">20</choice>
       <choice>30</choice>
     </choice-group>
   </question>
 
   <question id="11006">
-    <content>
+    <body>
       After the following code runs, what will be the value of `result`?
 
       ```js
@@ -151,16 +152,16 @@
 
       var result = foo()
       ```
-    </content>
+    </body>
     <choice-group>
       <choice>10</choice>
       <choice>20</choice>
-      <choice correct>30</choice>
+      <choice answer="answer">30</choice>
     </choice-group>
   </question>
 
   <question id="11007">
-    <content>
+    <body>
       After the following code runs, what will be the value of `result`?
 
       ```js
@@ -176,16 +177,16 @@
 
       var result = foo()
       ```
-    </content>
+    </body>
     <choice-group>
       <choice>10</choice>
       <choice>20</choice>
-      <choice correct>30</choice>
+      <choice answer="answer">30</choice>
     </choice-group>
   </question>
 
   <question id="11008">
-    <content>
+    <body>
       After the following code runs, what will be the value of `result`?
 
       ```js
@@ -201,11 +202,11 @@
 
       var result = foo()
       ```
-    </content>
+    </body>
     <choice-group>
       <choice>10</choice>
       <choice>20</choice>
-      <choice correct>30</choice>
+      <choice answer="answer">30</choice>
     </choice-group>
   </question>
 </group>

@@ -1,0 +1,66 @@
+<group name="Numbers and Strings">
+  <question type="input" id="14000">
+    <body>
+      After the following code runs, what will be the values of `result`?
+
+      ```js
+      var input = 30;
+      var result = input + "5";
+      ```
+    </body>
+
+    <answer>35</answer>
+  </question>
+
+  <question type="input" id="14001">
+    <body>
+      After the following code runs, what will be the values of `result`?
+
+      ```js
+      var input = 30;
+      var result = "5" + input;
+      ```
+    </body>
+
+    <answer>"530"</answer>
+  </question>
+
+  <question type="input" id="14002">
+    <body>
+      After the following code runs, what will be the values of `result`?
+
+      ```js
+      var input = 60;
+      var result = input + 2 + "5";
+      ```
+    </body>
+
+    <answer>67</answer>
+  </question>
+
+  <question type="input" id="14003">
+    <body>
+      After the following code runs, what will be the values of `result`?
+
+      ```js
+      var input = 60;
+      var result = "5" + input + 2;
+      ```
+    </body>
+
+    <answer>"5602"</answer>
+  </question>
+
+  <question type="input" id="14004">
+    <body>
+      After the following code runs, what will be the values of `result`?
+
+      ```js
+      var input = 60;
+      var result = "5" + (input + 2);
+      ```
+    </body>
+
+    <answer>"562"</answer>
+  </question>
+</group>

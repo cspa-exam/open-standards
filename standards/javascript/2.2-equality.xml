@@ -1,0 +1,110 @@
+<group name="Numbers and Strings">
+  <question id="22000">
+    <body>
+      After the following code runs, what will be the values of `result1` and `result2`?
+
+      ```js
+      var input = "23";
+      var result1 = input == 23;
+      var result2 = input === 23;
+      ```
+    </body>
+
+    <choice-group name="result1" label="`result1`">
+      <choice answer="answer">true</choice>
+      <choice>false</choice>
+    </choice-group>
+
+    <choice-group name="result2" label="`result2`">
+      <choice>true</choice>
+      <choice answer="answer">false</choice>
+    </choice-group>
+  </question>
+
+  <question id="22001">
+    <body>
+      After the following code runs, what will be the values of `result1` and `result2`?
+
+      ```js
+      var input = 50;
+      var result1 = input == "50";
+      var result2 = input === "50";
+      ```
+    </body>
+
+    <choice-group name="result1" label="`result1`">
+      <choice answer="answer">true</choice>
+      <choice>false</choice>
+    </choice-group>
+
+    <choice-group name="result2" label="`result2`">
+      <choice>true</choice>
+      <choice answer="answer">false</choice>
+    </choice-group>
+  </question>
+</group>
+
+<group name="Arrays">
+  <question id="22002">
+    <body>
+      After the following code runs, what will be the values of `result`?
+
+      ```js
+      var a = [10,20];
+      var b = [10,20];
+      var result = a === b;
+      ```
+    </body>
+    <choice-group>
+      <choice>true</choice>
+      <choice answer="answer">false</choice>
+    </choice-group>
+  </question>
+
+  <question id="22003">
+    <body>
+      After the following code runs, what will be the values of `result`?
+
+      ```js
+      var a = [10,20];
+      var b = a.slice();
+      var result = a === b;
+      ```
+    </body>
+    <choice-group>
+      <choice>true</choice>
+      <choice answer="answer">false</choice>
+    </choice-group>
+  </question>
+
+  <question id="22004">
+    <body>
+      After the following code runs, what will be the values of `result`?
+
+      ```js
+      var a = [10,20];
+      var b = a;
+      var result = a === b;
+      ```
+    </body>
+    <choice-group>
+      <choice answer="answer">true</choice>
+      <choice>false</choice>
+    </choice-group>
+  </question>
+
+  <question id="22005">
+    <body>
+      After the following code runs, what will be the values of `result`?
+
+      ```js
+      var a = [["bar"], ["bar"]];
+      var result = a[0];
+      ```
+    </body>
+    <choice-group>
+      <choice answer="answer">true</choice>
+      <choice>false</choice>
+    </choice-group>
+  </question>
+</group>

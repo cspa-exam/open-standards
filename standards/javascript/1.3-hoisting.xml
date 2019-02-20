@@ -13,7 +13,7 @@
     </body>
     <choice-group>
       <choice>10</choice>
-      <choice answer>20</choice>
+      <choice answer="answer">20</choice>
       <choice>None of the above. This code throws an error</choice>
     </choice-group>
   </question>
@@ -33,7 +33,7 @@
     <choice-group>
       <choice>10</choice>
       <choice>20</choice>
-      <choice answer>None of the above. This code throws an error</choice>
+      <choice answer="answer">None of the above. This code throws an error</choice>
     </choice-group>
   </question>
 
@@ -50,26 +50,30 @@
       ```
     </body>
     <choice-group>
-      <choice answer>10</choice>
+      <choice answer="answer">10</choice>
       <choice>20</choice>
       <choice>None of the above. This code throws an error</choice>
     </choice-group>
   </question>
 </group>
 
-<question id="13003">
-  <body>
-    After the following code runs, what will be the value of `result`?
+<group name="Variable Hoisting">
+  <question id="13003">
+    <body>
+      When running `foo()`, what will be the value of `result`?
 
-    ```js
-    var result = x;
-    var x = 10;
-    ```
-  </body>
-  <choice-group>
-    <choice>10</choice>
-    <choice>null</choice>
-    <choice>undefined</choice>
-    <choice>None of the above. This code throws an error</choice>
-  </choice-group>
-</question>
+      ```js
+      function foo () {
+        var result = x;
+        var x = 10;
+      }
+      ```
+    </body>
+    <choice-group>
+      <choice>10</choice>
+      <choice>null</choice>
+      <choice>undefined</choice>
+      <choice>None of the above. This code throws an error</choice>
+    </choice-group>
+  </question>
+</group>

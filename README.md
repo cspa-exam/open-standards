@@ -4,7 +4,7 @@
 
 - Why do programmers have to repeatedly take widely-varying and subjectively written technical tests each and every time they interview at a company?
 - Why do companies have to spend time reviewing each candidate as if from scratch?
-- What does it mean to be competent in a language, framework, or technology? Can we encode these requirements in a standardized way?
+- What does it mean to be competent in a language, framework, or technology? Can we encode these requirements in a precise, standardized way?
 
 These are not easy questions to answer! And we're not certainly not trying to do it alone. If you would like to input your expertise, please [apply for the Technical Steering Committee](https://cspa.io/tsc/apply).
 
@@ -14,7 +14,7 @@ The first tech we're targeting is the ever-increasingly ubiquitous JavaScript. J
 
 By providing these open standards, we hope to provide empirical guidance to programmers on what exactly they need to learn to start working in the industry. Because they are open, everyone in the world is free to not only write educational materials to teach these topics, but also to recognize them as the standard of competence when hiring new software developers for their team.
 
-We hope to make the software industry a better place!
+Our ultimate goal is to make the software industry a better place!
 
 ## Question Format
 

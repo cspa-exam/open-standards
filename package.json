@@ -1,0 +1,29 @@
+{
+  "name": "open-standards",
+  "version": "0.1.0",
+  "description": "An open set of standard questions every developer should know in their respective fields.",
+  "main": "index.js",
+  "dependencies": {
+    "sax": "^1.2.4",
+    "theredoc": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/sax": "^1.0.1",
+    "ospec": "^3.1.0",
+    "typescript": "^3.3.3"
+  },
+  "scripts": {
+    "test": "ospec"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cspa-exam/open-standards.git"
+  },
+  "keywords": [],
+  "author": "hello@cspa.io",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cspa-exam/open-standards/issues"
+  },
+  "homepage": "https://github.com/cspa-exam/open-standards#readme"
+}
