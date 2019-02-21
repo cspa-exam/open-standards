@@ -2,7 +2,7 @@
   "name": "open-standards",
   "version": "0.1.0",
   "description": "An open set of standard questions every developer should know in their respective fields.",
-  "main": "index.js",
+  "main": "dist/parser.js",
   "dependencies": {
     "sax": "^1.2.4",
     "theredoc": "^1.0.0"

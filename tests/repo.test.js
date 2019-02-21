@@ -1,8 +1,8 @@
 const o = require('ospec')
 const path = require('path')
 const glob = require('glob')
-const {parse} = require('../index')
-const {getQuestions} = require('../questions')
+const {parse} = require('../dist/parser')
+const {getQuestions} = require('../dist/questions')
 const {readFileSync} = require('fs')
 
 o('CSPA Open Standards Repo lint', async function () {

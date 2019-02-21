@@ -1,18 +1,20 @@
 import * as fs from 'fs'
-import {parse} from './index'
+import * as path from 'path'
+import {parse} from './parser'
 
 export async function getQuestions () {
-  const dirs: string[] = (await readDir(__dirname + '/standards'))
-    .filter(file => fs.statSync(`${__dirname}/standards/${file}`).isDirectory())
+  const standardsDir = path.resolve(__dirname, '../standards')
+  const dirs: string[] = (await readDir(standardsDir))
+    .filter(file => fs.statSync(`${standardsDir}/${file}`).isDirectory())
 
   return Promise.all(dirs.map(async dir => {
 
-    const questionFiles = (await readDir(__dirname + '/standards/' + dirs[0]))
+    const questionFiles = (await readDir(`${standardsDir}/${dirs[0]}`))
       .filter(file => file.match(/\.xml/))
 
     var sections = await Promise.all(questionFiles.map(async file => {
       const [, section] = file.match(/^(.*)\.xml$/)!
-      const content = await readFile(`${__dirname}/standards/${dir}/${file}`)
+      const content = await readFile(`${standardsDir}/${dir}/${file}`)
       return {
         section: section,
         questionGroups: await parse(content)

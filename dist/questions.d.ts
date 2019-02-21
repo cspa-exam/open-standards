@@ -2,6 +2,6 @@ export declare function getQuestions(): Promise<{
     subject: string;
     sections: {
         section: string;
-        questionGroups: import(".").Group[];
+        questionGroups: import("./parser").Group[];
     }[];
 }[]>;

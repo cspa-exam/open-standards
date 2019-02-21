@@ -7,7 +7,7 @@ const {
   ChoiceGroupLabelsError,
   OpenStandardParseError,
   InvalidChildForQuestionType,
-} = require('../index')
+} = require('../dist/parser')
 
 o('Parses a question using defaults', async function () {
   const content = `

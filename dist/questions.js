@@ -16,20 +16,22 @@ var __importStar = (this && this.__importStar) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const fs = __importStar(require("fs"));
-const index_1 = require("./index");
+const path = __importStar(require("path"));
+const parser_1 = require("./parser");
 function getQuestions() {
     return __awaiter(this, void 0, void 0, function* () {
-        const dirs = (yield readDir(__dirname + '/standards'))
-            .filter(file => fs.statSync(`${__dirname}/standards/${file}`).isDirectory());
+        const standardsDir = path.resolve(__dirname, '../standards');
+        const dirs = (yield readDir(standardsDir))
+            .filter(file => fs.statSync(`${standardsDir}/${file}`).isDirectory());
         return Promise.all(dirs.map((dir) => __awaiter(this, void 0, void 0, function* () {
-            const questionFiles = (yield readDir(__dirname + '/standards/' + dirs[0]))
+            const questionFiles = (yield readDir(`${standardsDir}/${dirs[0]}`))
                 .filter(file => file.match(/\.xml/));
             var sections = yield Promise.all(questionFiles.map((file) => __awaiter(this, void 0, void 0, function* () {
                 const [, section] = file.match(/^(.*)\.xml$/);
-                const content = yield readFile(`${__dirname}/standards/${dir}/${file}`);
+                const content = yield readFile(`${standardsDir}/${dir}/${file}`);
                 return {
                     section: section,
-                    questionGroups: yield index_1.parse(content)
+                    questionGroups: yield parser_1.parse(content)
                 };
             })));
             return {
