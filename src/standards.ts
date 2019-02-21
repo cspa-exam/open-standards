@@ -1,8 +1,17 @@
 import * as fs from 'fs'
 import * as path from 'path'
-import {parse} from './parser'
+import {parse, QuestionGroup} from './parser'
 
-export async function getQuestions () {
+export type Standard = {
+  name: string
+  sections: Section[]
+}
+export type Section = {
+  name: string
+  questionGroups: QuestionGroup[]
+}
+
+export async function parseStandards () {
   const standardsDir = path.resolve(__dirname, '../standards')
   const dirs: string[] = (await readDir(standardsDir))
     .filter(file => fs.statSync(`${standardsDir}/${file}`).isDirectory())
@@ -13,16 +22,16 @@ export async function getQuestions () {
       .filter(file => file.match(/\.xml/))
 
     var sections = await Promise.all(questionFiles.map(async file => {
-      const [, section] = file.match(/^(.*)\.xml$/)!
+      const [, sectionName] = file.match(/^(.*)\.xml$/)!
       const content = await readFile(`${standardsDir}/${dir}/${file}`)
       return {
-        section: section,
+        name: sectionName,
         questionGroups: await parse(content)
       }
     }))
 
     return {
-      subject: dir,
+      name: dir,
       sections: sections,
     }
   }))
@@ -44,5 +53,3 @@ function readDir (path: string): Promise<string[]> {
     })
   })
 }
-
-// getQuestions().then(x => console.log(JSON.stringify(x, undefined, 2)))

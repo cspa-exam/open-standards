@@ -1,4 +1,4 @@
-export declare type Group = {
+export declare type QuestionGroup = {
     name: string;
     questions: Question[];
 };
@@ -37,7 +37,7 @@ export declare type QuestionType = Question['type'];
 declare type ParseOptions = {
     existingIds?: string[];
 };
-export declare function parse(contents: string, options?: ParseOptions): Promise<Group[]>;
+export declare function parse(contents: string, options?: ParseOptions): Promise<QuestionGroup[]>;
 export declare class OpenStandardParseError extends Error {
 }
 export declare class DuplicateId extends OpenStandardParseError {

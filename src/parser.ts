@@ -3,7 +3,7 @@ const theredoc = require('theredoc')
 
 const DEFAULT_QUESTION_TYPE: QuestionType = 'multiple-choice'
 
-export type Group = {
+export type QuestionGroup = {
   name: string
   questions: Question[]
 }
@@ -54,13 +54,13 @@ type ParseOptions = {
   existingIds?: string[]
 }
 
-export function parse (contents: string, options: ParseOptions = {}): Promise<Group[]> {
+export function parse (contents: string, options: ParseOptions = {}): Promise<QuestionGroup[]> {
   return new Promise((resolve, reject) => {
     const parser = sax.parser(false, {
       lowercase: true,
     })
 
-    const groups: Group[] = []
+    const groups: QuestionGroup[] = []
     const seenIds: Record<string,true | undefined>
       = (options.existingIds || []).reduce((all, id) => {
         all[id] = true

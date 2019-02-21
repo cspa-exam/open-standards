@@ -2,7 +2,7 @@ const o = require('ospec')
 const path = require('path')
 const glob = require('glob')
 const {parse} = require('../dist/parser')
-const {getQuestions} = require('../dist/questions')
+const {parseStandards} = require('../dist/standards')
 const {readFileSync} = require('fs')
 
 o('CSPA Open Standards Repo lint', async function () {
@@ -25,6 +25,6 @@ o('CSPA Open Standards Repo lint', async function () {
   }
 })
 
-o('getQuestions', getQuestions)
+o('getQuestions', parseStandards)
 
 function concat (a,b) { return a.concat(b) }
