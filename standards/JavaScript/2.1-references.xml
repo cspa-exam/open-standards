@@ -18,7 +18,7 @@
       <choice answer>10</choice>
       <choice>20</choice>
       <choice>30</choice>
-      <choice>None of the above. This code throws an error</choice>
+      <choice>None of the above; this code throws an error.</choice>
     </choice-group>
   </question>
 
@@ -41,7 +41,7 @@
       <choice answer>10</choice>
       <choice>20</choice>
       <choice>30</choice>
-      <choice>None of the above. This code throws an error</choice>
+      <choice>None of the above; this code throws an error.</choice>
     </choice-group>
   </question>
 
@@ -63,7 +63,7 @@
     <choice-group>
       <choice answer>"a"</choice>
       <choice>"ab"</choice>
-      <choice>None of the above. This code throws an error</choice>
+      <choice>None of the above; this code throws an error.</choice>
     </choice-group>
   </question>
 </group>
@@ -199,7 +199,7 @@
       <choice>30</choice>
       <choice>null</choice>
       <choice>undefined</choice>
-      <choice>None of the above. This code throws an error</choice>
+      <choice>None of the above; this code throws an error.</choice>
     </choice-group>
   </question>
 </group>
@@ -227,7 +227,7 @@
       <choice>30</choice>
       <choice>null</choice>
       <choice>undefined</choice>
-      <choice>None of the above. This code throws an error</choice>
+      <choice>None of the above; this code throws an error.</choice>
     </choice-group>
   </question>
 </group>
