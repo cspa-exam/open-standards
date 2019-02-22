@@ -1,7 +1,7 @@
 <group name="Numbers and Strings">
   <question type="input" id="14000">
     <body>
-      After the following code runs, what will be the values of `result`?
+      After the following code runs, what will be the value of `result`?
 
       ```js
       var input = 30;
@@ -14,7 +14,7 @@
 
   <question type="input" id="14001">
     <body>
-      After the following code runs, what will be the values of `result`?
+      After the following code runs, what will be the value of `result`?
 
       ```js
       var input = 30;
@@ -27,7 +27,7 @@
 
   <question type="input" id="14002">
     <body>
-      After the following code runs, what will be the values of `result`?
+      After the following code runs, what will be the value of `result`?
 
       ```js
       var input = 60;
@@ -40,7 +40,7 @@
 
   <question type="input" id="14003">
     <body>
-      After the following code runs, what will be the values of `result`?
+      After the following code runs, what will be the value of `result`?
 
       ```js
       var input = 60;
@@ -53,7 +53,7 @@
 
   <question type="input" id="14004">
     <body>
-      After the following code runs, what will be the values of `result`?
+      After the following code runs, what will be the value of `result`?
 
       ```js
       var input = 60;

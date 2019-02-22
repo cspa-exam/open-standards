@@ -47,7 +47,7 @@
 <group name="Arrays">
   <question id="22002">
     <body>
-      After the following code runs, what will be the values of `result`?
+      After the following code runs, what will be the value of `result`?
 
       ```js
       var a = [10,20];
@@ -63,7 +63,7 @@
 
   <question id="22003">
     <body>
-      After the following code runs, what will be the values of `result`?
+      After the following code runs, what will be the value of `result`?
 
       ```js
       var a = [10,20];
@@ -79,7 +79,7 @@
 
   <question id="22004">
     <body>
-      After the following code runs, what will be the values of `result`?
+      After the following code runs, what will be the value of `result`?
 
       ```js
       var a = [10,20];
@@ -95,7 +95,7 @@
 
   <question id="22005">
     <body>
-      After the following code runs, what will be the values of `result`?
+      After the following code runs, what will be the value of `result`?
 
       ```js
       var a = [["bar"], ["bar"]];
