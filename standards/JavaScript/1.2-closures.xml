@@ -96,7 +96,7 @@
       <choice>0</choice>
       <choice>10</choice>
       <choice>20</choice>
-      <choice answer="answer">30</choice>
+      <choice answer>30</choice>
       <choice>40</choice>
       <choice>50</choice>
       <choice>60</choice>
@@ -108,7 +108,7 @@
       <choice>10</choice>
       <choice>20</choice>
       <choice>30</choice>
-      <choice answer="answer">40</choice>
+      <choice answer>40</choice>
       <choice>50</choice>
       <choice>60</choice>
       <choice>70</choice>
@@ -140,7 +140,7 @@
     <choice-group name="result1" label="`result1`">
       <choice>0</choice>
       <choice>10</choice>
-      <choice answer="answer">20</choice>
+      <choice answer>20</choice>
       <choice>30</choice>
       <choice>null</choice>
       <choice>undefined</choice>
@@ -152,7 +152,7 @@
       <choice>20</choice>
       <choice>30</choice>
       <choice>null</choice>
-      <choice answer="answer">undefined</choice>
+      <choice answer>undefined</choice>
     </choice-group>
   </question>
 </group>

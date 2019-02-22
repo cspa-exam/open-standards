@@ -13,7 +13,7 @@
     </body>
     <choice-group>
       <choice>10</choice>
-      <choice answer="answer">20</choice>
+      <choice answer>20</choice>
       <choice>None of the above. This code throws an error</choice>
     </choice-group>
   </question>
@@ -33,7 +33,7 @@
     <choice-group>
       <choice>10</choice>
       <choice>20</choice>
-      <choice answer="answer">None of the above. This code throws an error</choice>
+      <choice answer>None of the above. This code throws an error</choice>
     </choice-group>
   </question>
 
@@ -50,7 +50,7 @@
       ```
     </body>
     <choice-group>
-      <choice answer="answer">10</choice>
+      <choice answer>10</choice>
       <choice>20</choice>
       <choice>None of the above. This code throws an error</choice>
     </choice-group>

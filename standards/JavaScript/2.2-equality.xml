@@ -11,13 +11,13 @@
     </body>
 
     <choice-group name="result1" label="`result1`">
-      <choice answer="answer">true</choice>
+      <choice answer>true</choice>
       <choice>false</choice>
     </choice-group>
 
     <choice-group name="result2" label="`result2`">
       <choice>true</choice>
-      <choice answer="answer">false</choice>
+      <choice answer>false</choice>
     </choice-group>
   </question>
 
@@ -33,13 +33,13 @@
     </body>
 
     <choice-group name="result1" label="`result1`">
-      <choice answer="answer">true</choice>
+      <choice answer>true</choice>
       <choice>false</choice>
     </choice-group>
 
     <choice-group name="result2" label="`result2`">
       <choice>true</choice>
-      <choice answer="answer">false</choice>
+      <choice answer>false</choice>
     </choice-group>
   </question>
 </group>
@@ -57,7 +57,7 @@
     </body>
     <choice-group>
       <choice>true</choice>
-      <choice answer="answer">false</choice>
+      <choice answer>false</choice>
     </choice-group>
   </question>
 
@@ -73,7 +73,7 @@
     </body>
     <choice-group>
       <choice>true</choice>
-      <choice answer="answer">false</choice>
+      <choice answer>false</choice>
     </choice-group>
   </question>
 
@@ -88,7 +88,7 @@
       ```
     </body>
     <choice-group>
-      <choice answer="answer">true</choice>
+      <choice answer>true</choice>
       <choice>false</choice>
     </choice-group>
   </question>
@@ -99,12 +99,12 @@
 
       ```js
       var a = [["bar"], ["bar"]];
-      var result = a[0];
+      var result = a[0] === a[1];
       ```
     </body>
     <choice-group>
-      <choice answer="answer">true</choice>
-      <choice>false</choice>
+      <choice>true</choice>
+      <choice answer>false</choice>
     </choice-group>
   </question>
 </group>
