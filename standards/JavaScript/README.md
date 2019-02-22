@@ -23,16 +23,16 @@ And finally, this set does not test every single little aspect of JavaScript. In
 
 1. References
 2. Equality
-3. Callbacks
-4. Async Callbacks
+3. Keyword `this` binding
+4. Callbacks
+5. Async Callbacks
 
 ### Part 3
 
 1. Promises
 2. Higher-Order Functions
-3. Keyword this
-4. Arrow functions
-5. Globals
+3. Arrow functions
+4. Globals
 
 ### Part 4
 

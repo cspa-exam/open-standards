@@ -108,3 +108,95 @@
     </choice-group>
   </question>
 </group>
+
+<group name="Objects">
+  <question id="22006">
+    <body>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      var result = {} === {};
+      ```
+    </body>
+    <choice-group>
+      <choice>true</choice>
+      <choice answer>false</choice>
+    </choice-group>
+  </question>
+
+  <question id="22007">
+    <body>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      var first = {};
+      var second = {};
+      var result = first === second;
+      ```
+    </body>
+    <choice-group>
+      <choice>true</choice>
+      <choice answer>false</choice>
+    </choice-group>
+  </question>
+
+  <question id="22008">
+    <body>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      var first = {
+        x: 20
+      };
+      var second = {
+        x: 20
+      };
+      var result = first.x === second.x;
+      ```
+    </body>
+    <choice-group>
+      <choice answer>true</choice>
+      <choice>false</choice>
+    </choice-group>
+  </question>
+
+  <question id="22009">
+    <body>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      var first = {
+        inner: { data: 30 }
+      };
+      var second = {
+        inner: { data: 30 }
+      };
+      var result = first.inner === second.inner;
+      ```
+    </body>
+    <choice-group>
+      <choice>true</choice>
+      <choice answer>false</choice>
+    </choice-group>
+  </question>
+
+  <question id="22010">
+    <body>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      var first = {
+        inner: { data: 30 }
+      };
+      var second = {
+        inner: first.inner
+      };
+      var result = first.inner === second.inner;
+      ```
+    </body>
+    <choice-group>
+      <choice answer>true</choice>
+      <choice>false</choice>
+    </choice-group>
+  </question>
+</group>

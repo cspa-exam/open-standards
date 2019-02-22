@@ -231,3 +231,145 @@
     </choice-group>
   </question>
 </group>
+
+<group name="Object References">
+  <question id="21010">
+    <body>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      var a = {
+        x: 10
+      };
+      var b = {
+        x: a.x
+      };
+
+      a.x = 20;
+
+      var result = b.x;
+      ```
+    </body>
+    <choice-group>
+      <choice answer>10</choice>
+      <choice>20</choice>
+    </choice-group>
+  </question>
+
+  <question id="21011">
+    <body>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      var a = {
+        inner: { x: 10 }
+      };
+      var b = {
+        inner: a.inner
+      };
+
+      a.inner.x = 20;
+
+      var result = b.inner.x;
+      ```
+    </body>
+    <choice-group>
+      <choice>10</choice>
+      <choice answer>20</choice>
+    </choice-group>
+  </question>
+
+  <question id="21012">
+    <body>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      var a = {
+        inner: { x: 50 }
+      };
+
+      var b = {};
+      b.inner = a.inner;
+
+      a.inner.x = 60;
+
+      var result = b.inner.x;
+      ```
+    </body>
+    <choice-group>
+      <choice>50</choice>
+      <choice answer>60</choice>
+    </choice-group>
+  </question>
+
+  <question id="21013">
+    <body>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      var a = {
+        x: 40
+      };
+
+      var b = {};
+      b.x = a.x;
+
+      delete b.x
+
+      var result = a.x;
+      ```
+    </body>
+    <choice-group>
+      <choice answer>40</choice>
+      <choice>undefined</choice>
+    </choice-group>
+  </question>
+
+  <question id="21014">
+    <body>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      var a = {
+        inner: { x: 50 }
+      };
+
+      var b = {};
+      b.inner = a.inner;
+
+      delete b.inner
+
+      var result = a.inner.x;
+      ```
+    </body>
+    <choice-group>
+      <choice answer>50</choice>
+      <choice>undefined</choice>
+      <choice>None of the above; this code throws an error.</choice>
+    </choice-group>
+  </question>
+
+  <question id="21015">
+    <body>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      var a = {
+        inner: { x: 60 }
+      };
+
+      var b = {};
+      b.inner = a.inner;
+
+      delete b.inner.x
+
+      var result = a.inner.x;
+      ```
+    </body>
+    <choice-group>
+      <choice>60</choice>
+      <choice answer>undefined</choice>
+      <choice>None of the above; this code throws an error.</choice>
+    </choice-group>
+  </question>
+</group>
