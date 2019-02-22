@@ -1,4 +1,4 @@
-<group name="basic">
+<group name="Variable Shadowing">
   <question id="11000">
     <body>
       After the following code runs, what will be the value of `result`?
@@ -9,12 +9,35 @@
         return x + 2;
       }
 
-      var result = foo();
+      var result = foo(50);
       ```
     </body>
     <choice-group>
       <choice answer>10</choice>
       <choice>12</choice>
+      <choice>50</choice>
+      <choice>52</choice>
+    </choice-group>
+  </question>
+
+  <question id="11009">
+    <body>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      var x = 10;
+      function foo (x) {
+        return x + 2;
+      }
+
+      var result = foo(50);
+      ```
+    </body>
+    <choice-group>
+      <choice answer>10</choice>
+      <choice>12</choice>
+      <choice>50</choice>
+      <choice answer>52</choice>
     </choice-group>
   </question>
 </group>
