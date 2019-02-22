@@ -1,4 +1,4 @@
-# The CSPA Open Standards
+# The CSPA Open Standards [![Build Status](https://travis-ci.org/cspa-exam/open-standards.svg?branch=master)](https://travis-ci.org/cspa-exam/open-standards)
 
 [CSPA](cspa.io) is a tech company dedicated to streamlining the job market. This open source project is part of our efforts to find answers to some difficult questions:
 
