@@ -14,7 +14,7 @@ The first tech we're targeting is the ever-increasingly ubiquitous JavaScript. J
 
 By providing these open standards, we hope to provide empirical guidance to programmers on what exactly they need to learn to start working in the industry. Because they are open, everyone in the world is free to not only write educational materials to teach these topics, but also to recognize them as the standard of competence when hiring new software developers for their team.
 
-Our ultimate goal is to make the software industry a better place!
+Our ultimate goal is to make the software industry a better place! You can view this work-in-progress [here](./standards/JavaScript).
 
 ## Question Format
 
