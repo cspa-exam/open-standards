@@ -76,6 +76,65 @@ o('Parses an input question', async function () {
   o(question.answer).deepEquals({ text: 'the answer' })
 })
 
+o.spec('short-coding', function () {
+  o('parses', async function () {
+    const content = g(`
+      <question id="a-short-coding" type="short-coding">
+        <body>My Short Coding Q</body>
+        <given-code>
+        function foo () {
+          return 10;
+        }
+        </given-code>
+        <test>
+        assert.equal(foo(), 10)
+        </test>
+      </question>
+    `)
+
+    const groups = await parse(content)
+
+    const question = groups[0].questions[0]
+    o(question.text).equals('My Short Coding Q')
+    o(question.type).equals('short-coding')
+    o(question.givenCode).deepEquals({
+      text:
+`function foo () {
+  return 10;
+}`
+    })
+    o(question.tests).deepEquals([
+      { text: 'assert.equal(foo(), 10)' }
+    ])
+  })
+
+  o('parses with input-slot', async function () {
+    const content = g(`
+      <question id="with-slot" type="short-coding">
+        <body>My Short Coding Q</body>
+        <given-code input-slot="YOUR CODE HERE">
+        function foo () {
+          return YOUR CODE HERE;
+        }
+        </given-code>
+        <test>
+        assert.equal(foo(), 99)
+        </test>
+      </question>
+    `)
+
+    const groups = await parse(content)
+    const question = groups[0].questions[0]
+    o(question.givenCode).deepEquals({
+      inputSlot: 'YOUR CODE HERE',
+      text:
+`function foo () {
+  return YOUR CODE HERE;
+}`
+    })
+  })
+})
+
 o('Parses multiple questions', async function () {
   const sample = (id) => `
     <question id="${id}" type="input">

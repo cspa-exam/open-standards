@@ -93,6 +93,10 @@ o.spec("Attribute rejection", function () {
   o("question", () => check('question', g(`<question id="5" typp="4"></question>`)))
   o("choice-group", () => check('choice-group', g(`<question id="5"><choice-group nam="cool"></choice-group></question>`)))
 
+  o("given-code", () => check('given-code', g(`
+    <question type="short-coding" id="5"><given-code placehlr="123">x</given-code></question>
+  `)))
+
   o("choice", () => check('choice', g(`
     <question id="5">
       <choice-group>

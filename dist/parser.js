@@ -46,7 +46,10 @@ function parse(contents, options = {}) {
                     throw new InvalidChild(currentTag, node.name);
                 }
                 const type = node.attributes.type || DEFAULT_QUESTION_TYPE;
-                if (type !== 'multiple-choice' && type !== 'line-numbers' && type !== 'input') {
+                if (type !== 'multiple-choice' &&
+                    type !== 'line-numbers' &&
+                    type !== 'input' &&
+                    type !== 'short-coding') {
                     throw new OpenStandardParseError(`Invalid question type: ${type}`);
                 }
                 const id = node.attributes.id;
@@ -90,6 +93,19 @@ function parse(contents, options = {}) {
                             id: id,
                             text: '',
                             answer: { text: '' },
+                        }
+                    };
+                }
+                else if (type === 'short-coding') {
+                    current = {
+                        id: id,
+                        hasBody: false,
+                        question: {
+                            type: type,
+                            id: id,
+                            text: '',
+                            givenCode: { text: '' },
+                            tests: [],
                         }
                     };
                 }
@@ -158,6 +174,27 @@ function parse(contents, options = {}) {
                 whitelistAttrs([], 'answer', current.id, Object.keys(node.attributes));
                 textTarget = current.question.answer;
             }
+            else if (node.name === 'given-code') {
+                if (current.question.type !== 'short-coding') {
+                    throw new InvalidChildForQuestionType(current.id, current.question.type, node.name);
+                }
+                whitelistAttrs(['input-slot'], node.name, current.id, Object.keys(node.attributes));
+                textTarget = current.question.givenCode;
+                if ('input-slot' in node.attributes) {
+                    current.question.givenCode.inputSlot = node.attributes['input-slot'];
+                }
+            }
+            else if (node.name === 'test') {
+                if (current.question.type !== 'short-coding') {
+                    throw new InvalidChildForQuestionType(current.id, current.question.type, node.name);
+                }
+                whitelistAttrs([], node.name, current.id, Object.keys(node.attributes));
+                const newTest = {
+                    text: ''
+                };
+                current.question.tests.push(newTest);
+                textTarget = newTest;
+            }
             else {
                 throw new OpenStandardParseError(`Invalid tag: ${node.name}`);
             }
@@ -173,6 +210,10 @@ function parse(contents, options = {}) {
                 if (!current.hasBody) {
                     throw new OpenStandardParseError(`Body is required (question id=${current.id})`);
                 }
+                if (current.question.type === 'short-coding' &&
+                    current.question.tests.length === 0) {
+                    throw new OpenStandardParseError(`short-coding questions must have at least one <test> (question id=${current.id})`);
+                }
                 const currentGroup = groups[groups.length - 1];
                 currentGroup.questions.push(current.question);
             }
@@ -185,7 +226,7 @@ function parse(contents, options = {}) {
             if (tagName === 'body') {
                 current.hasBody = true;
             }
-            if (textTarget && ['body', 'choice', 'code', 'answer'].includes(tagName)) {
+            if (textTarget && ['body', 'choice', 'code', 'answer', 'given-code', 'test'].includes(tagName)) {
                 if (textTarget.text.indexOf('\t') >= 0) {
                     throw new OpenStandardParseError(`Please do not use tab characters in <${tagName}> (question id=${current.id})`);
                 }

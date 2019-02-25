@@ -13,6 +13,9 @@ type common = {
   text: string
 }
 
+//
+// Multiple Choice
+//
 export type MultiChoiceQuestion = common & {
   type: 'multiple-choice'
   choiceGroups: ChoiceGroup[]
@@ -27,6 +30,9 @@ export type Choice = {
   answer: boolean
 }
 
+//
+// Line Number Select
+//
 export type LineNumbersQuestion = common & {
   type: 'line-numbers'
   code: {
@@ -35,12 +41,38 @@ export type LineNumbersQuestion = common & {
   }
 }
 
+//
+// Input Box
+//
 export type InputQuestion = common & {
   type: 'input'
   answer: { text: string }
 }
 
-export type Question = MultiChoiceQuestion | LineNumbersQuestion | InputQuestion
+//
+// Short Coding
+//
+export type ShortCodingQuestion = common & {
+  type: 'short-coding'
+  tests: ShortCodingTest[]
+  givenCode: {
+    text: string
+    inputSlot?: string
+  }
+}
+export type ShortCodingTest = {
+  text: string
+}
+
+//
+// Total
+//
+export type Question =
+  | InputQuestion
+  | LineNumbersQuestion
+  | MultiChoiceQuestion
+  | ShortCodingQuestion
+
 export type QuestionType = Question['type']
 
 type QuestionBuild = {
@@ -92,8 +124,13 @@ export function parse (contents: string, options: ParseOptions = {}): Promise<Qu
       else if (node.name === 'question') {
         if (currentTag !== 'group') { throw new InvalidChild(currentTag, node.name) }
 
-        const type = (node.attributes.type as QuestionType) || DEFAULT_QUESTION_TYPE
-        if (type !== 'multiple-choice' && type !== 'line-numbers' && type !== 'input') {
+        const type = node.attributes.type || DEFAULT_QUESTION_TYPE
+        if (
+          type !== 'multiple-choice' &&
+          type !== 'line-numbers' &&
+          type !== 'input' &&
+          type !== 'short-coding'
+        ) {
           throw new OpenStandardParseError(`Invalid question type: ${type}`)
         }
 
@@ -140,6 +177,19 @@ export function parse (contents: string, options: ParseOptions = {}): Promise<Qu
               id: id,
               text: '',
               answer: { text: '' },
+            }
+          }
+        }
+        else if (type === 'short-coding') {
+          current = {
+            id: id,
+            hasBody: false,
+            question: {
+              type: type,
+              id: id,
+              text: '',
+              givenCode: { text: '' },
+              tests: [],
             }
           }
         }
@@ -211,6 +261,30 @@ export function parse (contents: string, options: ParseOptions = {}): Promise<Qu
 
         textTarget = current.question.answer
       }
+      else if (node.name === 'given-code') {
+        if (current.question.type !== 'short-coding') {
+          throw new InvalidChildForQuestionType(current.id, current.question.type, node.name)
+        }
+        whitelistAttrs(['input-slot'], node.name, current.id, Object.keys(node.attributes))
+
+        textTarget = current.question.givenCode
+
+        if ('input-slot' in node.attributes) {
+          current.question.givenCode.inputSlot = node.attributes['input-slot'] as string
+        }
+      }
+      else if (node.name === 'test') {
+        if (current.question.type !== 'short-coding') {
+          throw new InvalidChildForQuestionType(current.id, current.question.type, node.name)
+        }
+        whitelistAttrs([], node.name, current.id, Object.keys(node.attributes))
+
+        const newTest: ShortCodingTest = {
+          text: ''
+        }
+        current.question.tests.push(newTest)
+        textTarget = newTest
+      }
       else {
         throw new OpenStandardParseError(`Invalid tag: ${node.name}`)
       }
@@ -229,6 +303,12 @@ export function parse (contents: string, options: ParseOptions = {}): Promise<Qu
         if (! current.hasBody) {
           throw new OpenStandardParseError(`Body is required (question id=${current.id})`)
         }
+        if (
+          current.question.type === 'short-coding' &&
+          current.question.tests.length === 0
+        ) {
+          throw new OpenStandardParseError(`short-coding questions must have at least one <test> (question id=${current.id})`)
+        }
         const currentGroup = groups[groups.length - 1]
         currentGroup.questions.push(current.question)
       }
@@ -246,7 +326,7 @@ export function parse (contents: string, options: ParseOptions = {}): Promise<Qu
         current.hasBody = true
       }
 
-      if (textTarget && ['body', 'choice', 'code', 'answer'].includes(tagName)) {
+      if (textTarget && ['body', 'choice', 'code', 'answer', 'given-code', 'test'].includes(tagName)) {
         if (textTarget.text.indexOf('\t') >= 0) {
           throw new OpenStandardParseError(`Please do not use tab characters in <${tagName}> (question id=${current.id})`)
         }

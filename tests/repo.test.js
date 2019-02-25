@@ -15,7 +15,7 @@ o('CSPA Open Standards Repo lint', async function () {
         existingIds: seenIds
       })
       seenIds = seenIds.concat(
-        groups.map(g => g.questions.map(q => q.id)).reduce(concat)
+        groups.map(g => g.questions.map(q => q.id)).reduce(concat, [])
       )
     }
     catch (err) {

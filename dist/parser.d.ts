@@ -32,7 +32,18 @@ export declare type InputQuestion = common & {
         text: string;
     };
 };
-export declare type Question = MultiChoiceQuestion | LineNumbersQuestion | InputQuestion;
+export declare type ShortCodingQuestion = common & {
+    type: 'short-coding';
+    tests: ShortCodingTest[];
+    givenCode: {
+        text: string;
+        inputSlot?: string;
+    };
+};
+export declare type ShortCodingTest = {
+    text: string;
+};
+export declare type Question = InputQuestion | LineNumbersQuestion | MultiChoiceQuestion | ShortCodingQuestion;
 export declare type QuestionType = Question['type'];
 declare type ParseOptions = {
     existingIds?: string[];

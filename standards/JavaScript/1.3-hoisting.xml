@@ -77,3 +77,30 @@
     </choice-group>
   </question>
 </group>
+
+<group name="Hoisting in Function Scopes">
+  <question id="13004">
+    <body>
+      When running `foo()`, what will be the value of `result`?
+
+      ```js
+      function foo () {
+        return bar() + 20;
+
+        function bar () {
+          return 10;
+        }
+      }
+
+      var result = foo();
+      ```
+    </body>
+    <choice-group>
+      <choice>10</choice>
+      <choice>20</choice>
+      <choice answer>30</choice>
+      <choice>NaN</choice>
+      <choice>None of the above; this code throws an error.</choice>
+    </choice-group>
+  </question>
+</group>
