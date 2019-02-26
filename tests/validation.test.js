@@ -23,6 +23,16 @@ o.spec("short-coding validation", function () {
       o(!! err.message.match(/<test>/)).equals(true)
     }
   })
+
+  o("Allows no tests with input-slot", async function () {
+    const content = g(`
+      <question id="no-tests" type="short-coding">
+        <body>No Tests</body>
+        <given-code input-slot="abc">foo(abc)</given-code>
+      </question>
+    `)
+    await parse(content)
+  })
 })
 
 const g = (content) => `<group name="g">${content}</group>`

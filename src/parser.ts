@@ -305,7 +305,8 @@ export function parse (contents: string, options: ParseOptions = {}): Promise<Qu
         }
         if (
           current.question.type === 'short-coding' &&
-          current.question.tests.length === 0
+          current.question.tests.length === 0 &&
+          ! current.question.givenCode.inputSlot
         ) {
           throw new OpenStandardParseError(`short-coding questions must have at least one <test> (question id=${current.id})`)
         }

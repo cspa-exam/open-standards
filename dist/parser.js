@@ -211,7 +211,8 @@ function parse(contents, options = {}) {
                     throw new OpenStandardParseError(`Body is required (question id=${current.id})`);
                 }
                 if (current.question.type === 'short-coding' &&
-                    current.question.tests.length === 0) {
+                    current.question.tests.length === 0 &&
+                    !current.question.givenCode.inputSlot) {
                     throw new OpenStandardParseError(`short-coding questions must have at least one <test> (question id=${current.id})`);
                 }
                 const currentGroup = groups[groups.length - 1];
