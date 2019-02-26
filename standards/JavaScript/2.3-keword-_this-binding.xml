@@ -1,0 +1,322 @@
+<group name="Within Objects">
+  <question id="23000">
+    <body>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      'use strict';
+
+      var obj = {
+        name: "Alice",
+        greet: function () {
+          return this.name + " says hello!";
+        }
+      };
+
+      var result = obj.greet();
+      ```
+    </body>
+    <choice-group>
+      <choice answer>Alice says hello!</choice>
+      <choice>None of the above; this code throws an error.</choice>
+    </choice-group>
+  </question>
+
+  <question id="23001">
+    <body>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      'use strict';
+
+      var first = {
+        name: "Alice",
+        greet: function () {
+          return this.name + " says hello!";
+        }
+      };
+
+      var second = {
+        name: "Bob",
+        greet: first.greet
+      };
+
+      var result = second.greet();
+      ```
+    </body>
+    <choice-group>
+      <choice>Alice says hello!</choice>
+      <choice answer>Bob says hello!</choice>
+      <choice>None of the above; this code throws an error.</choice>
+    </choice-group>
+  </question>
+
+  <question id="23002">
+    <body>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      'use strict';
+
+      var first = {
+        name: "Alice",
+        greet: function () {
+          return this.name + " says hello!";
+        }
+      };
+
+      var second = {
+        name: "Bob",
+        greet: first.greet
+      };
+
+      var f = second.greet;
+      var result = f();
+      ```
+    </body>
+    <choice-group>
+      <choice>Alice says hello!</choice>
+      <choice>Bob says hello!</choice>
+      <choice answer>None of the above; this code throws an error.</choice>
+    </choice-group>
+  </question>
+
+  <question id="23003">
+    <body>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      'use strict';
+
+      function greet () {
+        return this.name + " says hello!";
+      }
+
+      var first = {
+        name: "Alice",
+        greet: greet
+      };
+
+      var result = first.greet();
+      ```
+    </body>
+    <choice-group>
+      <choice answer>Alice says hello!</choice>
+      <choice>None of the above; this code throws an error.</choice>
+    </choice-group>
+  </question>
+
+  <question id="23004">
+    <body>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      'use strict';
+
+      function greet () {
+        return this.name + " says hello!";
+      }
+
+      var first = {
+        name: "Alice",
+        greet: greet
+      };
+
+      var result = greet();
+      ```
+    </body>
+    <choice-group>
+      <choice>Alice says hello!</choice>
+      <choice answer>None of the above; this code throws an error.</choice>
+    </choice-group>
+  </question>
+</group>
+
+<group name="Function.prototype.call / Function.prototype.apply">
+  <question type="short-coding" id="23005">
+    <body>
+      Replace the `XXX` with a line of code that uses `Function.prototype.call` to
+      make the assertion pass.
+    </body>
+    <given-code input-slot="XXX">
+      'use strict'
+
+      var alice = {
+        name: "Alice",
+        greet: function (target) {
+          return this.name + " says hello to " + target;
+        }
+      };
+
+      var result = alice.greet.XXX;
+
+      assert.equal(result, "Alice says hello to Bob")
+    </given-code>
+    <test>assert.ok(GIVEN_CODE.toString().indexOf('alice\.greet\.call\(') >= 0, 'Function.prototype.call must be used')</test>
+  </question>
+
+  <question type="short-coding" id="23006">
+    <body>
+      Replace the `XXX` with a line of code that uses `Function.prototype.apply` to
+      make the assertion pass.
+    </body>
+    <given-code input-slot="XXX">
+      'use strict'
+
+      var alice = {
+        name: "Alice",
+        greet: function (target) {
+          return this.name + " says hello to " + target;
+        }
+      };
+
+      var result = alice.greet.XXX;
+
+      assert.equal(result, "Alice says hello to Bob");
+    </given-code>
+    <test>assert.ok(GIVEN_CODE.toString().indexOf('alice\.greet\.apply\(') >= 0, 'Function.prototype.apply must be used')</test>
+  </question>
+
+  <question type="short-coding" id="23007">
+    <body>
+      Replace the `XXX` with a line of code that makes the assertion pass.
+    </body>
+    <given-code input-slot="XXX">
+      'use strict'
+
+      function greet (target) {
+        return this.name + " says hello to " + target;
+      }
+
+      var result = greet.call(XXX);
+
+      assert.equal(result, "Alice says hello to Bob");3
+    </given-code>
+  </question>
+</group>
+
+<group name="Function.prototype.bind">
+  <question id="23008">
+    <body>
+      After all code runs, what will be the final output of the console?
+
+      ```js
+      'use strict';
+
+      function greet () {
+        console.log(this.name + " says hello!");
+      }
+
+      var alice = { name: "Alice" };
+      var bob = { name: "Bob" };
+
+      var f = alice.greet.bind(alice);
+      var result = f();
+      ```
+    </body>
+    <choice-group>
+      <choice answer>Alice says hello!</choice>
+      <choice>None of the above; this code throws an error.</choice>
+    </choice-group>
+  </question>
+
+  <question id="23009">
+    <body>
+      After all code runs, what will be the final output of the console?
+
+      ```js
+      'use strict';
+
+      function greet () {
+        console.log(this.name + " says hello!");
+      }
+
+      var alice = { name: "Alice" };
+      var bob = { name: "Bob" };
+
+      var f = alice.greet.bind(alice);
+      var result = f();
+      ```
+    </body>
+    <choice-group>
+      <choice answer>Alice says hello!</choice>
+      <choice>Bob says hello!</choice>
+      <choice>None of the above; this code throws an error.</choice>
+    </choice-group>
+  </question>
+
+  <question id="23010">
+    <body>
+      After all code runs, what will be the final output of the console?
+
+      ```js
+      'use strict';
+
+      function greet () {
+        console.log(this.name + " says hello!");
+      }
+
+      var alice = { name: "Alice" };
+      var bob = { name: "Bob" };
+
+      var f = alice.greet.bind(bob);
+      var result = f();
+      ```
+    </body>
+    <choice-group>
+      <choice>Alice says hello!</choice>
+      <choice answer>Bob says hello!</choice>
+      <choice>None of the above; this code throws an error.</choice>
+    </choice-group>
+  </question>
+
+  <question id="23011">
+    <body>
+      After all code runs, what will be the final output of the console?
+
+      ```js
+      'use strict';
+
+      function greet () {
+        console.log(this.name + " says hello!");
+      }
+
+      var alice = { name: "Alice" };
+      var bob = { name: "Bob" };
+
+      alice.greet.bind(bob);
+      var result = alice.greet();
+      ```
+    </body>
+    <choice-group>
+      <choice answer>Alice says hello!</choice>
+      <choice>Bob says hello!</choice>
+      <choice>None of the above; this code throws an error.</choice>
+    </choice-group>
+  </question>
+
+  <question id="23012">
+    <body>
+      After all code runs, what will be the final output of the console?
+
+      ```js
+      'use strict';
+
+      function greet () {
+        console.log(this.name + " says hello!");
+      }
+
+      var alice = { name: "Alice" };
+      var bob = { name: "Bob" };
+
+      greet.bind(alice);
+      var result = greet();
+      ```
+    </body>
+    <choice-group>
+      <choice>Alice says hello!</choice>
+      <choice>Bob says hello!</choice>
+      <choice answer>None of the above; this code throws an error.</choice>
+    </choice-group>
+  </question>
+</group>
