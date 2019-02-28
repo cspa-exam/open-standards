@@ -13,8 +13,8 @@
       ```
     </body>
     <choice-group>
-      <choice answer>10</choice>
-      <choice>12</choice>
+      <choice>10</choice>
+      <choice answer>12</choice>
       <choice>50</choice>
       <choice>52</choice>
     </choice-group>
