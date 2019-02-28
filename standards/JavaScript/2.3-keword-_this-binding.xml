@@ -210,7 +210,7 @@
       var alice = { name: "Alice" };
       var bob = { name: "Bob" };
 
-      var f = alice.greet.bind(alice);
+      var f = greet.bind(alice);
       var result = f();
       ```
     </body>
@@ -234,7 +234,9 @@
       var alice = { name: "Alice" };
       var bob = { name: "Bob" };
 
-      var f = alice.greet.bind(alice);
+      bob.greet = greet;
+
+      var f = bob.greet.bind(alice);
       var result = f();
       ```
     </body>
@@ -259,7 +261,7 @@
       var alice = { name: "Alice" };
       var bob = { name: "Bob" };
 
-      var f = alice.greet.bind(bob);
+      var f = greet.bind(bob);
       var result = f();
       ```
     </body>
@@ -284,7 +286,10 @@
       var alice = { name: "Alice" };
       var bob = { name: "Bob" };
 
+      alice.greet = greet;
+
       alice.greet.bind(bob);
+
       var result = alice.greet();
       ```
     </body>
