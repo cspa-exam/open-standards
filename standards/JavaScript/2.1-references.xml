@@ -152,7 +152,9 @@
     </body>
     <choice-group>
       <choice>[10, 20]</choice>
-      <choice answer>[10, 20, 30]</choice>
+      <choice>[10, 20, 30]</choice>
+      <choice>2</choice>
+      <choice answer>3</choice>
       <choice>undefined</choice>
     </choice-group>
   </question>
