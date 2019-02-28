@@ -190,7 +190,7 @@
 
       var result = greet.call(XXX);
 
-      assert.equal(result, "Alice says hello to Bob");3
+      assert.equal(result, "Alice says hello to Bob");
     </given-code>
   </question>
 </group>
