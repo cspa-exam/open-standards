@@ -85,43 +85,43 @@
 <group name="Multiple Functions">
   <question id="11003">
     <body>
-      When the `go` function runs, what will be the value of `result`?
+      After the following code runs, what will be the value of `result`?
 
       ```js
       var x = 10;
-      function getValue () {
+      function maybeModify () {
         var x = 20;
-        return x;
       }
       function go () {
         x = 30;
-        var result = getValue();
+        maybeModify();
+        return x;
       }
-      go();
+      var result = go();
       ```
     </body>
     <choice-group>
       <choice>10</choice>
-      <choice answer>20</choice>
-      <choice>30</choice>
+      <choice>20</choice>
+      <choice answer>30</choice>
     </choice-group>
   </question>
 
   <question id="11004">
     <body>
-      When the `go` function runs, what will be the value of `result`?
+      After the following code runs, what will be the value of `result`?
 
       ```js
       var x = 10;
-      function getValue () {
+      function maybeModify () {
         x = 20;
-        return x;
       }
       function go () {
         x = 30;
-        var result = getValue();
+        maybeModify();
+        return x;
       }
-      go();
+      var result = go();
       ```
     </body>
     <choice-group>
