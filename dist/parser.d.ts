@@ -55,6 +55,10 @@ export declare class DuplicateId extends OpenStandardParseError {
     id: string;
     constructor(id: string);
 }
+export declare class ChoiceGroupAnswerCountError extends OpenStandardParseError {
+    id: string;
+    constructor(id: string, count: number);
+}
 export declare class ChoiceGroupLabelsError extends OpenStandardParseError {
     id: string;
     constructor(id: string);

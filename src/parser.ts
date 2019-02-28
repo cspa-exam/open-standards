@@ -310,18 +310,24 @@ export function parse (contents: string, options: ParseOptions = {}): Promise<Qu
         ) {
           throw new OpenStandardParseError(`short-coding questions must have at least one <test> (question id=${current.id})`)
         }
+        if (current.question.type === 'multiple-choice') {
+          if (
+            current.question.choiceGroups.length >= 2 &&
+            ! current.question.choiceGroups.every(g => !! g.label)
+          ) {
+            throw new ChoiceGroupLabelsError(current.id)
+          }
+          for (let choiceGroup of current.question.choiceGroups) {
+            const answerCount = choiceGroup.choices.reduce((sum, c) => sum + (c.answer?1:0), 0)
+            if (answerCount !== 1) {
+              throw new ChoiceGroupAnswerCountError(current.id, answerCount)
+            }
+          }
+        }
         const currentGroup = groups[groups.length - 1]
         currentGroup.questions.push(current.question)
       }
 
-      if (
-        tagName === 'choice-group' &&
-        current.question.type === 'multiple-choice' &&
-        current.question.choiceGroups.length >= 2 &&
-        ! current.question.choiceGroups.every(g => !! g.label)
-      ) {
-        throw new ChoiceGroupLabelsError(current.id)
-      }
 
       if (tagName === 'body') {
         current.hasBody = true
@@ -364,9 +370,16 @@ export class DuplicateId extends OpenStandardParseError {
     super(`Duplicate question id: "${id}"`)
   }
 }
+export class ChoiceGroupAnswerCountError extends OpenStandardParseError {
+  constructor(public id: string, count: number) {
+    super(`<choice-group> ${
+      count < 1 ? 'must have at least' : 'cannot have more than'
+    } one answer <choice> (question id=${id})`)
+  }
+}
 export class ChoiceGroupLabelsError extends OpenStandardParseError {
   constructor(public id: string) {
-    super(`<choice-group> must have a label attribute when multiple are present (question id=${id})`)
+    super(`Each <choice-group> must have a label attribute when more than one are present (question id=${id})`)
   }
 }
 export class InvalidAttribute extends OpenStandardParseError {

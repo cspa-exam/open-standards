@@ -198,7 +198,7 @@
       <choice>20</choice>
       <choice>30</choice>
       <choice>null</choice>
-      <choice>undefined</choice>
+      <choice answer>undefined</choice>
       <choice>None of the above; this code throws an error.</choice>
     </choice-group>
   </question>
@@ -214,7 +214,6 @@
 
       function foo (f) {
         f = function () { return 20; };
-        return f();
       }
 
       foo(g);
@@ -223,6 +222,7 @@
       ```
     </body>
     <choice-group>
+      <choice answer>10</choice>
       <choice>20</choice>
       <choice>30</choice>
       <choice>null</choice>

@@ -64,15 +64,18 @@
 
       ```js
       function foo () {
-        var result = x;
+        var temp = x;
         var x = 10;
+        return temp;
       }
+
+      var result = foo();
       ```
     </body>
     <choice-group>
       <choice>10</choice>
       <choice>null</choice>
-      <choice>undefined</choice>
+      <choice answer>undefined</choice>
       <choice>None of the above; this code throws an error.</choice>
     </choice-group>
   </question>
