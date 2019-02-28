@@ -228,8 +228,8 @@
     </body>
     <choice-group>
       <choice>10</choice>
-      <choice>20</choice>
-      <choice answer>30</choice>
+      <choice answer>20</choice>
+      <choice>30</choice>
     </choice-group>
   </question>
 </group>
