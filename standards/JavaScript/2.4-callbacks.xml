@@ -1,0 +1,172 @@
+<group name="Zero Arity">
+  <question id="24000">
+    <body>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      function foo (f) {
+        return f() + 10;
+      }
+
+      function a () { return 10; }
+
+      var result = foo(a);
+      ```
+    </body>
+    <choice-group>
+      <choice>10</choice>
+      <choice answer>20</choice>
+      <choice>30</choice>
+      <choice>undefined</choice>
+    </choice-group>
+  </question>
+
+  <question id="24001">
+    <body>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      function foo (f) {
+        return f() + 10;
+      }
+
+      var result = foo(function () { return 20; });
+      ```
+    </body>
+    <choice-group>
+      <choice>10</choice>
+      <choice>20</choice>
+      <choice answer>30</choice>
+      <choice>undefined</choice>
+    </choice-group>
+  </question>
+
+  <question id="24002">
+    <body>
+      After the following code runs, what will be the value of `result1` and `result2`?
+
+      ```js
+      function foo (num, f, g) {
+        if (num &gt; 15) {
+          return f();
+        }
+        else {
+          return g();
+        }
+      }
+
+      function ten () { return 10; }
+      function twenty () { return 20; }
+
+      var result1 = foo(5, ten, twenty);
+      var result2 = foo(25, ten, twenty);
+      ```
+    </body>
+
+    <choice-group name="result1" label="`result1`">
+      <choice>5</choice>
+      <choice>10</choice>
+      <choice>15</choice>
+      <choice answer>20</choice>
+      <choice>25</choice>
+    </choice-group>
+
+    <choice-group name="result2" label="`result2`">
+      <choice>5</choice>
+      <choice answer>10</choice>
+      <choice>15</choice>
+      <choice>20</choice>
+      <choice>25</choice>
+    </choice-group>
+  </question>
+
+  <question id="24003">
+    <body>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      function foo (f, g) {
+        if (f()) {
+          return g();
+        }
+        else {
+          return null;
+        }
+      }
+
+      function a () { return false; }
+
+      var result = foo(a, function () {
+        return 20;
+      })
+      ```
+    </body>
+    <choice-group>
+      <choice>true</choice>
+      <choice>false</choice>
+      <choice>20</choice>
+      <choice answer>null</choice>
+    </choice-group>
+  </question>
+</group>
+
+<group name="Consuming Callbacks">
+  <question type="short-coding" id="24004">
+    <body>
+      Complete the function `foo` such that the tests pass.
+    </body>
+    <given-code>
+      function foo (f) {
+        // Complete me
+        return f() * 2
+      }
+    </given-code>
+    <test>
+      assert.equal(
+        foo(function () { return 10 }),
+        20
+      )
+    </test>
+    <test>
+      assert.equal(
+        foo(function () { return 15 }),
+        30
+      )
+    </test>
+  </question>
+
+  <question type="short-coding" id="24005">
+    <body>
+      Complete the function `foo` such that the tests pass.
+    </body>
+    <given-code>
+      function foo (b, f) {
+        // Complete me
+      }
+    </given-code>
+    <test>
+      assert.equal(
+        foo(true, function () { return 30 }),
+        35
+      )
+    </test>
+    <test>
+      assert.equal(
+        foo(false, function () { return 30 }),
+        25
+      )
+    </test>
+    <test>
+      assert.equal(
+        foo(true, function () { return 100 }),
+        105
+      )
+    </test>
+    <test>
+      assert.equal(
+        foo(false, function () { return 200 }),
+        195
+      )
+    </test>
+  </question>
+</group>
