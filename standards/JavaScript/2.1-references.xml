@@ -29,11 +29,11 @@
       ```js
       var x = 10;
 
-      function f (y) {
+      function foo (y) {
         y += 20;
       }
 
-      f(x);
+      foo(x);
       var result = x;
       ```
     </body>
@@ -52,11 +52,11 @@
       ```js
       var x = "a";
 
-      function f (y) {
+      function foo (y) {
         y += "b";
       }
 
-      f(x);
+      foo(x);
       var result = x;
       ```
     </body>
@@ -79,7 +79,8 @@
       function foo (o) {
         o = { x: 20 };
       }
-      foo();
+
+      foo(obj);
       var result = obj.x;
       ```
     </body>
@@ -100,7 +101,8 @@
       function foo (o) {
         o.x = 20;
       }
-      foo();
+
+      foo(obj);
       var result = obj.x;
       ```
     </body>
