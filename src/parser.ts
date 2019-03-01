@@ -1,6 +1,15 @@
 import * as sax from 'sax'
 const theredoc = require('theredoc')
 
+export type Standard = {
+  name: string
+  sections: Section[]
+}
+export type Section = {
+  name: string
+  questionGroups: QuestionGroup[]
+}
+
 const DEFAULT_QUESTION_TYPE: QuestionType = 'multiple-choice'
 
 export type QuestionGroup = {

@@ -1,3 +1,11 @@
+export declare type Standard = {
+    name: string;
+    sections: Section[];
+};
+export declare type Section = {
+    name: string;
+    questionGroups: QuestionGroup[];
+};
 export declare type QuestionGroup = {
     name: string;
     questions: Question[];

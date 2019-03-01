@@ -1,15 +1,6 @@
 import * as fs from 'fs'
 import * as path from 'path'
-import {parse, QuestionGroup} from './parser'
-
-export type Standard = {
-  name: string
-  sections: Section[]
-}
-export type Section = {
-  name: string
-  questionGroups: QuestionGroup[]
-}
+import {parse, Section, Standard} from './parser'
 
 export async function parseStandards () {
   const standardsDir = path.resolve(__dirname, '../standards')
@@ -24,16 +15,18 @@ export async function parseStandards () {
     var sections = await Promise.all(questionFiles.map(async file => {
       const [, sectionName] = file.match(/^(.*)\.xml$/)!
       const content = await readFile(`${standardsDir}/${dir}/${file}`)
-      return {
+      const section: Section = {
         name: sectionName,
         questionGroups: await parse(content)
       }
+      return section
     }))
 
-    return {
+    const standard: Standard = {
       name: dir,
       sections: sections,
     }
+    return standard
   }))
 }
 

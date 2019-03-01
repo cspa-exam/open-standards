@@ -29,15 +29,17 @@ function parseStandards() {
             var sections = yield Promise.all(questionFiles.map((file) => __awaiter(this, void 0, void 0, function* () {
                 const [, sectionName] = file.match(/^(.*)\.xml$/);
                 const content = yield readFile(`${standardsDir}/${dir}/${file}`);
-                return {
+                const section = {
                     name: sectionName,
                     questionGroups: yield parser_1.parse(content)
                 };
+                return section;
             })));
-            return {
+            const standard = {
                 name: dir,
                 sections: sections,
             };
+            return standard;
         })));
     });
 }
