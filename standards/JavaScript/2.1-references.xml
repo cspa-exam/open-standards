@@ -126,7 +126,7 @@
         a = [10, 20, 30];
       }
 
-      foo();
+      foo(arr);
       var result = arr;
       ```
     </body>
@@ -148,8 +148,8 @@
         a.push(30);
       }
 
-      foo();
-      var result = arr.length;
+      foo(arr);
+      var result = arr;
       ```
     </body>
     <choice-group>
@@ -170,8 +170,8 @@
         a.concat([30]);
       }
 
-      foo();
-      var result = arr.length;
+      foo(arr);
+      var result = arr;
       ```
     </body>
     <choice-group>
