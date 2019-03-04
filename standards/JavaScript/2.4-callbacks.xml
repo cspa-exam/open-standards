@@ -1,4 +1,4 @@
-<group name="Zero Arity">
+<group name="Zero Arity Callbacks">
   <question id="24000">
     <body>
       After the following code runs, what will be the value of `result`?
