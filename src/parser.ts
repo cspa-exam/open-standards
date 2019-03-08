@@ -63,14 +63,16 @@ export type InputQuestion = common & {
 //
 export type ShortCodingQuestion = common & {
   type: 'short-coding'
-  tests: ShortCodingTest[]
   givenCode: {
     text: string
     inputSlot?: string
   }
+  testSetup: { text: string }
+  tests: ShortCodingTest[]
 }
 export type ShortCodingTest = {
   text: string
+  title?: string
 }
 
 //
@@ -198,6 +200,7 @@ export function parse (contents: string, options: ParseOptions = {}): Promise<Qu
               id: id,
               text: '',
               givenCode: { text: '' },
+              testSetup: { text: '' },
               tests: [],
             }
           }
@@ -286,13 +289,24 @@ export function parse (contents: string, options: ParseOptions = {}): Promise<Qu
         if (current.question.type !== 'short-coding') {
           throw new InvalidChildForQuestionType(current.id, current.question.type, node.name)
         }
-        whitelistAttrs([], node.name, current.id, Object.keys(node.attributes))
+        whitelistAttrs(['title'], node.name, current.id, Object.keys(node.attributes))
 
         const newTest: ShortCodingTest = {
           text: ''
         }
+        if ('title' in node.attributes) {
+          newTest.title = node.attributes['title'] as string
+        }
         current.question.tests.push(newTest)
         textTarget = newTest
+      }
+      else if (node.name === 'test-setup') {
+        if (current.question.type !== 'short-coding') {
+          throw new InvalidChildForQuestionType(current.id, current.question.type, node.name)
+        }
+        whitelistAttrs([], node.name, current.id, Object.keys(node.attributes))
+
+        textTarget = current.question.testSetup
       }
       else {
         throw new OpenStandardParseError(`Invalid tag: ${node.name}`)
@@ -342,7 +356,7 @@ export function parse (contents: string, options: ParseOptions = {}): Promise<Qu
         current.hasBody = true
       }
 
-      if (textTarget && ['body', 'choice', 'code', 'answer', 'given-code', 'test'].includes(tagName)) {
+      if (textTarget && ['body', 'choice', 'code', 'answer', 'given-code', 'test', 'test-setup'].includes(tagName)) {
         if (textTarget.text.indexOf('\t') >= 0) {
           throw new OpenStandardParseError(`Please do not use tab characters in <${tagName}> (question id=${current.id})`)
         }

@@ -89,6 +89,9 @@ o.spec('short-coding', function () {
         <test>
         assert.equal(foo(), 10)
         </test>
+        <test title="abc">
+        assert.equal(foo(), 20)
+        </test>
       </question>
     `)
 
@@ -104,7 +107,8 @@ o.spec('short-coding', function () {
 }`
     })
     o(question.tests).deepEquals([
-      { text: 'assert.equal(foo(), 10)' }
+      { text: 'assert.equal(foo(), 10)' },
+      { text: 'assert.equal(foo(), 20)', title: 'abc' },
     ])
   })
 

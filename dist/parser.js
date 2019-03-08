@@ -105,6 +105,7 @@ function parse(contents, options = {}) {
                             id: id,
                             text: '',
                             givenCode: { text: '' },
+                            testSetup: { text: '' },
                             tests: [],
                         }
                     };
@@ -188,12 +189,22 @@ function parse(contents, options = {}) {
                 if (current.question.type !== 'short-coding') {
                     throw new InvalidChildForQuestionType(current.id, current.question.type, node.name);
                 }
-                whitelistAttrs([], node.name, current.id, Object.keys(node.attributes));
+                whitelistAttrs(['title'], node.name, current.id, Object.keys(node.attributes));
                 const newTest = {
                     text: ''
                 };
+                if ('title' in node.attributes) {
+                    newTest.title = node.attributes['title'];
+                }
                 current.question.tests.push(newTest);
                 textTarget = newTest;
+            }
+            else if (node.name === 'test-setup') {
+                if (current.question.type !== 'short-coding') {
+                    throw new InvalidChildForQuestionType(current.id, current.question.type, node.name);
+                }
+                whitelistAttrs([], node.name, current.id, Object.keys(node.attributes));
+                textTarget = current.question.testSetup;
             }
             else {
                 throw new OpenStandardParseError(`Invalid tag: ${node.name}`);
@@ -233,7 +244,7 @@ function parse(contents, options = {}) {
             if (tagName === 'body') {
                 current.hasBody = true;
             }
-            if (textTarget && ['body', 'choice', 'code', 'answer', 'given-code', 'test'].includes(tagName)) {
+            if (textTarget && ['body', 'choice', 'code', 'answer', 'given-code', 'test', 'test-setup'].includes(tagName)) {
                 if (textTarget.text.indexOf('\t') >= 0) {
                     throw new OpenStandardParseError(`Please do not use tab characters in <${tagName}> (question id=${current.id})`);
                 }

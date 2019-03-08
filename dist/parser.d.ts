@@ -42,14 +42,18 @@ export declare type InputQuestion = common & {
 };
 export declare type ShortCodingQuestion = common & {
     type: 'short-coding';
-    tests: ShortCodingTest[];
     givenCode: {
         text: string;
         inputSlot?: string;
     };
+    testSetup: {
+        text: string;
+    };
+    tests: ShortCodingTest[];
 };
 export declare type ShortCodingTest = {
     text: string;
+    title?: string;
 };
 export declare type Question = InputQuestion | LineNumbersQuestion | MultiChoiceQuestion | ShortCodingQuestion;
 export declare type QuestionType = Question['type'];
