@@ -16,7 +16,7 @@ export async function parseStandards () {
       const [, sectionName] = file.match(/^(.*)\.xml$/)!
       const content = await readFile(`${standardsDir}/${dir}/${file}`)
       const section: Section = {
-        name: sectionName,
+        name: titleize(sectionName),
         questionGroups: await parse(content)
       }
       return section
@@ -45,4 +45,11 @@ function readDir (path: string): Promise<string[]> {
       resolve(files)
     })
   })
+}
+
+function titleize (src: string) {
+  return src.split('-')
+    .map(p => p[0].toUpperCase() + p.slice(1))
+    .map(p => p[0] === '_' ? p.slice(1) : p) // Remove leading underscores
+    .join(' ')
 }

@@ -25,6 +25,10 @@ o('CSPA Open Standards Repo lint', async function () {
   }
 })
 
-o('getQuestions', parseStandards)
+o('getQuestions', async function () {
+  const standards = await parseStandards()
+  o(standards[0].sections[0].name).equals('1.1 Function Scopes')
+  o(standards[0].sections[6].name).equals('2.3 Keyword this Binding')
+})
 
 function concat (a,b) { return a.concat(b) }

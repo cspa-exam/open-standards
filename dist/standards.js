@@ -30,7 +30,7 @@ function parseStandards() {
                 const [, sectionName] = file.match(/^(.*)\.xml$/);
                 const content = yield readFile(`${standardsDir}/${dir}/${file}`);
                 const section = {
-                    name: sectionName,
+                    name: titleize(sectionName),
                     questionGroups: yield parser_1.parse(content)
                 };
                 return section;
@@ -61,4 +61,10 @@ function readDir(path) {
             resolve(files);
         });
     });
+}
+function titleize(src) {
+    return src.split('-')
+        .map(p => p[0].toUpperCase() + p.slice(1))
+        .map(p => p[0] === '_' ? p.slice(1) : p) // Remove leading underscores
+        .join(' ');
 }
