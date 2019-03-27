@@ -1,0 +1,285 @@
+<group name="The Event Loop">
+  <question id="25000">
+    <body>
+      After all code and callbacks run, what will be the value of `result`?
+
+      ```js
+      var nums = [10, 20, 30];
+
+      setTimeout(function () {
+        nums += 40;
+      }, 0)
+
+      var result = nums.map(function (x) {
+        return x * 2;
+      })
+      ```
+    </body>
+    <choice-group>
+      <choice>`[10, 20, 30, 40]`</choice>
+      <choice>`[20, 40, 60, 80]`</choice>
+      <choice>`[10, 20, 30]`</choice>
+      <choice answer>`[20, 40, 60]`</choice>
+    </choice-group>
+  </question>
+
+  <question id="25001">
+    <body>
+      After all code and callbacks run, what will be the value of `result`?
+
+      ```js
+      var result = 'A';
+      setTimeout(function () {
+        result += ' B';
+      }, 1000);
+
+      setTimeout(function () {
+        result += ' C';
+      }, 0);
+
+      result += ' D';
+      ```
+    </body>
+    <choice-group>
+      <choice>`A B C D`</choice>
+      <choice>`A B D C`</choice>
+      <choice>`A C D B`</choice>
+      <choice>`A C D B`</choice>
+      <choice answer>`A D C B`</choice>
+      <choice>`A D B C`</choice>
+    </choice-group>
+  </question>
+
+  <question id="25002">
+    <body>
+      After all code and callbacks run, what will be the value of `result`?
+
+      ```js
+      var result = 'A';
+      setTimeout(function () {
+        result += ' B';
+
+        setTimeout(function () {
+          result += ' C';
+        }, 0);
+      }, 0);
+
+      setTimeout(function () {
+        result += ' D';
+      }, 0);
+      ```
+    </body>
+    <choice-group>
+      <choice>`A B C D`</choice>
+      <choice answer>`A B D C`</choice>
+      <choice>`A C D B`</choice>
+      <choice>`A C D B`</choice>
+      <choice>`A D C B`</choice>
+      <choice>`A D B C`</choice>
+    </choice-group>
+  </question>
+</group>
+
+<group name="Invocation">
+  <question id="25003">
+    <body>
+      After all code and callbacks run, what will be the value of result?
+
+      Pay close attention to detail.
+
+      ```js
+      var result = "A";
+
+      function foo () {
+        result += " B";
+      }
+
+      result += " C";
+
+      setTimeout(foo, 2000)
+
+      result += " D";
+      ```
+    </body>
+    <choice-group>
+      <choice>`A B C D`</choice>
+      <choice>`A B D C`</choice>
+      <choice>`A C B D`</choice>
+      <choice answer>`A C D B`</choice>
+      <choice>`A D B C`</choice>
+      <choice>`A D C B`</choice>
+    </choice-group>
+  </question>
+
+  <question id="25004">
+    <body>
+      After all code and callbacks run, what will be the value of result?
+
+      Pay close attention to detail.
+
+      ```js
+      var result = "A";
+
+      function foo () {
+        result += " B";
+      }
+
+      result += " C";
+
+      setTimeout(foo(), 2000)
+
+      result += " D";
+      ```
+    </body>
+    <choice-group>
+      <choice>`A B C D`</choice>
+      <choice>`A B D C`</choice>
+      <choice answer>`A C B D`</choice>
+      <choice>`A C D B`</choice>
+      <choice>`A D B C`</choice>
+      <choice>`A D C B`</choice>
+    </choice-group>
+  </question>
+</group>
+
+<group name="Error-First Callbacks">
+  <question type="short-coding" id="25005">
+    <body>
+      You have access to a function `getFollowers` which takes two parameters:
+
+      1. A target username (as a string)
+      2. An error-first callback
+
+      `getFollowers` *supplies* the error-first callback with *an array of strings*, where
+      each string represents a username that follows the target user.
+
+      However, if the target user's profile is private, it supplies an error instead,
+      with the message `profile_is_private`.
+
+      Write an error-first callback style function `getFollowersOfFollowers` that
+      receives a target username and supplies **all followers of that user's followers**
+      as a **sorted**, flat array of strings.
+
+      Error handling:
+
+      - If you encounter a `profile_is_private` error, simply exclude it from the list.
+      - If you encounter other errors, abort the process and supply the error instead.
+
+      For instance, assuming:
+
+      - Users `B`, `C`, and `E` follow user `A`
+      - `D` follows `B`
+      - `C` has a private profile
+      - `E` and `F` follow `D`
+      - `F` follows `E`
+
+      Then the following code...
+
+      ```js
+      getFollowersOfFollowers('A', function (err, result) {
+        console.log("Result:", result)
+      })
+      ```
+
+      ...should output this to the console:
+
+      ```js
+      Result: ['D', 'F']
+      ```
+    </body>
+
+    <given-code>
+      function getFollowersOfFollowers (targetUsername, callback) {
+        // Complete me
+      };
+    </given-code>
+    <test-setup>
+      var followers = {
+        a1: ['b','c','d'],
+        a2: ['c','d'],
+
+        b: ['e','f'],
+        c: 'private',
+        d: ['h','i'],
+
+        e: [],
+        f: [],
+        g: [],
+        h: [],
+        i: [],
+      };
+      function getFollowers (target, cb) {
+        if (target === 'emulate_network_error') {
+          cb(new Error('timeout'));
+        }
+        else if (target === 'emulate_server_error') {
+          cb(new Error('server_error'));
+        }
+        else if (followers[target] === 'private') {
+          cb(new Error('profile_is_private'));
+        }
+        else {
+          cb(null, followers[target]);
+        }
+      }
+    </test-setup>
+    <test>
+      let error;
+      let result;
+      let count = 0;
+      getFollowersOfFollowers('a1', (err, usernames) => {
+        count += 1;
+        error = err;
+        result = usernames;
+      })
+      assert.equal(count, 1, "callback is called exactly once");
+      assert.equal(error, null, "no error is supplied");
+      assert.deepEqual(result, ['e','f','h','i']);
+      assert.pass();
+    </test>
+    <test>
+      let error;
+      let result;
+      let count = 0;
+      getFollowersOfFollowers('a2', (err, usernames) => {
+        count += 1;
+        error = err;
+        result = usernames;
+      })
+      assert.equal(count, 1, "callback is called exactly once");
+      assert.equal(error, null, "no error is supplied");
+      assert.deepEqual(result, ['h','i']);
+      assert.pass();
+    </test>
+    <test title="With Network Error">
+      let error;
+      let result;
+      let count = 0;
+      getFollowersOfFollowers('emulate_network_error', (err, usernames) => {
+        count += 1;
+        error = err;
+        result = usernames;
+      })
+      assert.equal(count, 1, "callback is called exactly once");
+      assert.ok(error, "error is supplied");
+      assert.equal(error.message, "timeout", "correct error is supplied");
+      assert.equal(result, undefined, "result is omitted");
+      assert.pass();
+    </test>
+    <test title="With Server Error">
+      let error;
+      let result;
+      let count = 0;
+      getFollowersOfFollowers('emulate_server_error', (err, usernames) => {
+        count += 1;
+        error = err;
+        result = usernames;
+      })
+      assert.equal(count, 1, "callback is called exactly once");
+      assert.ok(error, "error is supplied");
+      assert.equal(error.message, "server_error", "correct error is supplied");
+      assert.equal(result, undefined, "result is omitted");
+      assert.pass();
+    </test>
+  </question>
+</group>
