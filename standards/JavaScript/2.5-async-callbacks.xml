@@ -7,19 +7,15 @@
       var nums = [10, 20, 30];
 
       setTimeout(function () {
-        nums += 40;
+        nums.push(40);
       }, 0)
 
-      var result = nums.map(function (x) {
-        return x * 2;
-      })
+      var result = nums.length;
       ```
     </body>
     <choice-group>
-      <choice>`[10, 20, 30, 40]`</choice>
-      <choice>`[20, 40, 60, 80]`</choice>
-      <choice>`[10, 20, 30]`</choice>
-      <choice answer>`[20, 40, 60]`</choice>
+      <choice answer>3</choice>
+      <choice>4</choice>
     </choice-group>
   </question>
 
