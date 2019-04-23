@@ -8,7 +8,7 @@ Key points to keep in mind:
 - **This repo contains all the answers** – it's primarily for question crafting. If you want to test yourself on this knowledge, you can take the self-paced exam at [CSPA.io](cspa.io) (coming soon).
 - **These questions test fundamental JavaScript**. Other areas – such as Node.js and the browser – will be more thoroughly covered in future standards.
 
-And finally, this set does not test every single little aspect of JavaScript. Instead, it intends to cover difficult-but-fundamental concepts, as well as common pitfalls of the language.
+And finally, this set does not test every single little aspect of JavaScript. Instead, it intends to cover difficult but fundamental concepts, as well as common pitfalls of the language.
 
 ## Topics Covered
 
