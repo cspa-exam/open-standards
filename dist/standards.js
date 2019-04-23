@@ -24,7 +24,7 @@ function parseStandards() {
         const dirs = (yield readDir(standardsDir))
             .filter(file => fs.statSync(`${standardsDir}/${file}`).isDirectory());
         return Promise.all(dirs.map((dir) => __awaiter(this, void 0, void 0, function* () {
-            const questionFiles = (yield readDir(`${standardsDir}/${dirs[0]}`))
+            const questionFiles = (yield readDir(`${standardsDir}/${dir}`))
                 .filter(file => file.match(/\.xml/));
             var sections = yield Promise.all(questionFiles.map((file) => __awaiter(this, void 0, void 0, function* () {
                 const [, sectionName] = file.match(/^(.*)\.xml$/);

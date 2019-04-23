@@ -9,7 +9,7 @@ export async function parseStandards () {
 
   return Promise.all(dirs.map(async dir => {
 
-    const questionFiles = (await readDir(`${standardsDir}/${dirs[0]}`))
+    const questionFiles = (await readDir(`${standardsDir}/${dir}`))
       .filter(file => file.match(/\.xml/))
 
     var sections = await Promise.all(questionFiles.map(async file => {
