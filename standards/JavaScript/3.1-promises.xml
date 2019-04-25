@@ -1,0 +1,542 @@
+
+<group name="Values vs Promise Objects">
+  <question id="31000">
+    <body>
+      Assume `getUser` returns a promise that resolves with `{ name: 'Alice' }`.
+
+      After all promises resolve, what will be the value of result?
+
+      ```js
+      var result = getUser()
+        .then(function (user) {
+          return user;
+        });
+      ```
+    </body>
+    <choice-group>
+      <choice>`{ name: 'Alice' }`</choice>
+      <choice answer>A promise that resolves with `{ name: 'Alice' }`</choice>
+      <choice>`undefined`</choice>
+      <choice>A promise that resolves with `undefined`</choice>
+    </choice-group>
+  </question>
+
+  <question id="31001">
+    <body>
+      Assume `getUser` returns a promise that resolves with `{ name: 'Alice' }`.
+
+      After all promises resolve, what will be the value of result?
+
+      ```js
+      var result;
+      getUser().then(function (user) {
+        result = user;
+      });
+      ```
+    </body>
+    <choice-group>
+      <choice answer>`{ name: 'Alice' }`</choice>
+      <choice>A promise that resolves with `{ name: 'Alice' }`</choice>
+      <choice>`undefined`</choice>
+      <choice>A promise that resolves with `undefined`</choice>
+    </choice-group>
+  </question>
+
+  <question id="31002">
+    <body>
+      Assume `getUser` returns a promise that resolves with `{ name: 'Alice' }`.
+
+      After all promises resolve, what will be the value of result?
+
+      ```js
+      var result = getUser();
+      ```
+    </body>
+    <choice-group>
+      <choice>`{ name: 'Alice' }`</choice>
+      <choice answer>A promise that resolves with `{ name: 'Alice' }`</choice>
+      <choice>`undefined`</choice>
+      <choice>A promise that resolves with `undefined`</choice>
+    </choice-group>
+  </question>
+</group>
+
+<group name="Basic Usage">
+  <question id="31003">
+    <body>
+      Assume `getUser` returns a promise that resolves with `{ name: 'Alice' }`.
+
+      After all promises resolve, what will be the value of result?
+
+      ```js
+      var result = getUser()
+        .then(function (user) {
+          return user.name;
+        });
+      ```
+    </body>
+    <choice-group>
+      <choice>`'Alice!'`</choice>
+      <choice answer>A promise that resolves with `'Alice!'`</choice>
+      <choice>`{ name: 'Alice!' }`</choice>
+      <choice>A promise that resolves with `{ name: 'Alice!' }`</choice>
+      <choice>`undefined`</choice>
+      <choice>A promise that resolves with `undefined`</choice>
+    </choice-group>
+  </question>
+
+  <question id="31005">
+    <body>
+      Assume `getUser` returns a promise that resolves with `{ name: 'Alice' }`.
+
+      After all promises resolve, what will be the value of result?
+
+      ```js
+      var result;
+
+      getUser()
+        .then(function (user) {
+          result = user.name + '!';
+        });
+      ```
+    </body>
+    <choice-group>
+      <choice answer>`'Alice!`</choice>
+      <choice>A promise that resolves with `'Alice!'`</choice>
+      <choice>`{ name: 'Alice!' }`</choice>
+      <choice>A promise that resolves with `{ name: 'Alice!' }`</choice>
+      <choice>`undefined`</choice>
+      <choice>A promise that resolves with `undefined`</choice>
+    </choice-group>
+  </question>
+</group>
+
+<group name="Chaining">
+  <question id="31006">
+    <body>
+      Assume `init` returns a promise that resolves with `100`.
+
+      After all promises resolve, what will be the value of result?
+
+      ```js
+      var result = init()
+        .then(function (x) {
+          return x + 200;
+        });
+      ```
+    </body>
+    <choice-group>
+      <choice>A promise that resolves with `100`</choice>
+      <choice>A promise that resolves with `200`</choice>
+      <choice answer>A promise that resolves with `300`</choice>
+    </choice-group>
+  </question>
+
+  <question id="31007">
+    <body>
+      Assume `init` returns a promise that resolves with `100`.
+
+      After all promises resolve, what will be the value of result?
+
+      ```js
+      var result = init()
+        .then(function (x) {
+          return x + 200;
+        })
+        .then(function (x) {
+          return x + 300;
+        });
+      ```
+    </body>
+    <choice-group>
+      <choice>A promise that resolves with `100`</choice>
+      <choice>A promise that resolves with `200`</choice>
+      <choice>A promise that resolves with `300`</choice>
+      <choice>A promise that resolves with `500`</choice>
+      <choice answer>A promise that resolves with `600`</choice>
+    </choice-group>
+  </question>
+
+  <question id="31008">
+    <body>
+      Assume `init` returns a promise that resolves with `100`.
+
+      After all promises resolve, what will be the value of result?
+
+      ```js
+      var result = init()
+        .then(function (x) {
+          return x + 200;
+        });
+
+
+      init.then(function (x) {
+        return x + 300;
+      });
+      ```
+    </body>
+    <choice-group>
+      <choice>A promise that resolves with `100`</choice>
+      <choice>A promise that resolves with `200`</choice>
+      <choice answer>A promise that resolves with `300`</choice>
+      <choice>A promise that resolves with `500`</choice>
+      <choice>A promise that resolves with `600`</choice>
+    </choice-group>
+  </question>
+
+  <question id="31009">
+    <body>
+      Assume `init` returns a promise that resolves with `100`.
+
+      After all promises resolve, what will be the value of result_1 and result_2?
+
+      ```js
+      var result_1 = init()
+        .then(function (x) {
+          return x + 200
+        })
+
+      var result_2 = result_1
+        .then(function (x) {
+          return x + 300
+        });
+      ```
+    </body>
+    <choice-group name="result_1" label="`result_1`">
+      <choice>A promise that resolves with `100`</choice>
+      <choice answer>A promise that resolves with `300`</choice>
+      <choice>A promise that resolves with `600`</choice>
+    </choice-group>
+
+    <choice-group name="result_2" label="`result_2`">
+      <choice>A promise that resolves with `100`</choice>
+      <choice>A promise that resolves with `300`</choice>
+      <choice answer>A promise that resolves with `600`</choice>
+    </choice-group>
+  </question>
+</group>
+
+<group name="Resolve Behavior">
+  <question id="31010">
+    <body>
+      Assume `getValue` returns a promise that resolves with `25`.
+
+      After all promises resolve, what will be the value of result?
+
+      ```js
+      var first = getValue();
+
+      first.then(function (x) {
+        return x + 10;
+      });
+
+      var result = first.then(function (x) {
+        return x + 10;
+      });
+      ```
+    </body>
+    <choice-group>
+      <choice>A promise that resolves with `25`</choice>
+      <choice answer>A promise that resolves with `35`</choice>
+      <choice>A promise that resolves with `45`</choice>
+    </choice-group>
+  </question>
+
+  <question id="31011">
+    <body>
+      Assume `getObj` returns a promise that resolves with `{ x: 10 }`.
+
+      After all promises resolve, what will be the value of result?
+
+      ```js
+      var promise = getObj();
+
+      promise.then(function (obj) {
+        obj.x += 40;
+      });
+
+      var result = promise.then(function (obj) {
+        return obj.x;
+      });
+      ```
+    </body>
+    <choice-group>
+      <choice>A promise that resolves with `10`</choice>
+      <choice answer>A promise that resolves with `50`</choice>
+      <choice>Neither; this code throws an error.</choice>
+    </choice-group>
+  </question>
+</group>
+
+<group name="Error Branching">
+  <question id="31012">
+    <body>
+      Assume `userExists(2)` resolves with `true`,
+      whereas `userExists(999)` rejects with `"not_found"`.
+
+      After all promises resolve, what will be the value of result?
+
+      ```js
+      var result = userExists(999)
+        .then(function () {
+          return 'Welcome';
+        });
+      ```
+    </body>
+    <choice-group>
+      <choice>A promise that resolves with `Welcome`</choice>
+      <choice>A promise that *rejects* with `Welcome`</choice>
+      <choice answer>A promise that *rejects* with `"not_found"`</choice>
+    </choice-group>
+  </question>
+
+  <question id="31013">
+    <body>
+      Assume `userExists(2)` resolves with `true`,
+      whereas `userExists(999)` rejects with `"not_found"`.
+
+      After all promises resolve, what will be the value of result?
+
+      ```js
+      var result = userExists(999)
+        .then(function () {
+          return 'Welcome';
+        })
+        .catch(function () {
+          return 'Goodbye';
+        });
+      ```
+    </body>
+    <choice-group>
+      <choice>A promise that resolves with `Welcome`</choice>
+      <choice answer>A promise that resolves with `Goodbye`</choice>
+      <choice>A promise that *rejects* with `Welcome`</choice>
+      <choice>A promise that *rejects* with `Goodbye`</choice>
+      <choice>A promise that *rejects* with `"not_found"`</choice>
+    </choice-group>
+  </question>
+
+  <question id="31014">
+    <body>
+      Assume `userExists(2)` resolves with `true`,
+      whereas `userExists(999)` rejects with `"not_found"`.
+
+      After all promises resolve, what will be the value of result?
+
+      ```js
+      var result = userExists(2)
+        .then(function () {
+          return 'Welcome';
+        })
+        .catch(function () {
+          return 'Goodbye';
+        })
+      ```
+    </body>
+    <choice-group>
+      <choice answer>A promise that resolves with `Welcome`</choice>
+      <choice>A promise that resolves with `Goodbye`</choice>
+      <choice>A promise that *rejects* with `Welcome`</choice>
+      <choice>A promise that *rejects* with `Goodbye`</choice>
+      <choice>A promise that *rejects* with `"not_found"`</choice>
+    </choice-group>
+  </question>
+</group>
+
+<group name="Chaining Part 2">
+  <question id="31015">
+    <body>
+      Assume the following:
+
+      - `findEmail(3)` resolves with `{ content: "hi", user_id: 7 }`
+      - `findEmail(999)` rejects with `"not_found"`
+
+      - `findUser(7)` resolves with `{ name: "Bob" }`
+      - `findUser(888)` rejects with `"not_found"`
+
+      After all promises resolve, what will be the value of result?
+
+      ```js
+      var result = findEmailById(3)
+        .then(function (email) {
+          return findUser(email.user_id);
+        })
+      ```
+    </body>
+    <choice-group>
+      <choice>A promise that resolves with `{ content: "hi", user_id: 7 }`</choice>
+      <choice answer>A promise that resolves with `{ name: "Bob" }`</choice>
+      <choice>A promise that resolves with `"Bob"`</choice>
+      <choice>A promise that resolves with `7`</choice>
+    </choice-group>
+  </question>
+
+  <question id="31016">
+    <body>
+      Assume the following:
+
+      - `findEmail(3)` resolves with `{ content: "hi", user_id: 7 }`
+      - `findEmail(999)` rejects with `"not_found"`
+
+      - `findUser(7)` resolves with `{ name: "Bob" }`
+      - `findUser(888)` rejects with `"not_found"`
+
+      After all promises resolve, what will be the value of result?
+
+      ```js
+      var result = findEmailById(3)
+        .then(function (email) {
+          return findUser(email.user_id);
+        })
+        .then(function (user) {
+          return user.id;
+        })
+      ```
+    </body>
+    <choice-group>
+      <choice>A promise that resolves with `{ content: "hi", user_id: 7 }`</choice>
+      <choice>A promise that resolves with `{ name: "Bob" }`</choice>
+      <choice>A promise that resolves with `"Bob"`</choice>
+      <choice answer>A promise that resolves with `7`</choice>
+    </choice-group>
+  </question>
+</group>
+
+<group name="Concurrent Promises">
+  <question id="31017">
+    <body>
+      In the following code, assume `getLatestScore` is a function that makes
+      a network request and returns a promise.
+
+      ```js
+      getLatestScore()
+        .then(function () {
+          console.log("one")
+        })
+
+      getLatestScore()
+        .then(function () {
+          console.log("two")
+        })
+        .then(function () {
+          console.log("three")
+        })
+      ```
+
+      Which of the following **is not** a possible output to the console?
+    </body>
+    <choice-group>
+      <choice>
+        ```text
+        one
+        two
+        three
+        ```
+      </choice>
+      <choice answer>
+        ```text
+        one
+        three
+        two
+        ```
+      </choice>
+      <choice>
+        ```text
+        two
+        one
+        three
+        ```
+      </choice>
+    </choice-group>
+  </question>
+
+  <question id="31018">
+    <body>
+      In the following code, assume `getLatestScore` is a function that makes
+      a network request and returns a promise.
+
+      ```js
+      getLatestScore().then(function () {
+        console.log("one")
+      })
+
+      Promise.all([
+        getLatestScore().then(function(){ console.log("two") }),
+        getLatestScore().then(function(){ console.log("three") }),
+      ])
+        .then(function() {
+          console.log("four")
+        })
+      ```
+
+      Which of the following **is not** a possible output to the console?
+    </body>
+    <choice-group>
+      <choice>
+        ```text
+        one
+        two
+        three
+        four
+        ```
+      </choice>
+      <choice>
+        ```text
+        one
+        three
+        two
+        four
+        ```
+      </choice>
+      <choice>
+        ```text
+        three
+        two
+        four
+        one
+        ```
+      </choice>
+      <choice answer>
+        ```text
+        one
+        three
+        four
+        two
+        ```
+      </choice>
+    </choice-group>
+  </question>
+</group>
+
+<group name="Creating Promises">
+  <question id="31019">
+    <body>
+      After all promises resolve, what will be the value of `result_1` and `result_2`?
+
+      ```js
+      function foo (x) {
+        return new Promise(function (resolve, reject) {
+          if (x > 10) {
+            reject(x)
+          }
+          else {
+            resolve(x)
+          }
+        })
+      }
+      var result_1 = foo(15)
+      var result_2 = foo(3)
+      ```
+    </body>
+
+    <choice-group label="result_1">
+      <choice>A promise that resolves with `15`</choice>
+      <choice answer>A promise that rejects with `15`</choice>
+    </choice-group>
+
+    <choice-group label="result_2">
+      <choice answer>A promise that resolves with `3`</choice>
+      <choice>A promise that rejects with `3`</choice>
+    </choice-group>
+  </question>
+</group>
