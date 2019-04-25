@@ -2,7 +2,9 @@
 <group name="Closure Identification">
   <question type="line-numbers" id="12000">
     <body>
-      Which line number(s) cause a closure to be created?
+      Which variable references cause a closure to be created?
+
+      Select all lines that apply.
     </body>
     <code answer="5">
       var x = 10;
@@ -17,7 +19,9 @@
 
   <question type="line-numbers" id="12001">
     <body>
-      Which line number(s) cause a closure to be created?
+      Which variable references cause a closure to be created?
+
+      Select all lines that apply.
     </body>
     <code answer="5,8">
       var x = 10;
@@ -35,7 +39,9 @@
 
   <question type="line-numbers" id="12002">
     <body>
-      When running the function `foo()`, which line number(s) cause a closure to be created?
+      When running the function `foo()`, which variable references cause a closure to be created?
+
+      Select all lines that apply.
     </body>
     <code answer="5">
       var x = 10;
@@ -50,7 +56,9 @@
 
   <question type="line-numbers" id="12003">
     <body>
-      When running the function `foo()`, which line number(s) cause a closure to be created?
+      When running the function `foo()`, which variable references cause a closure to be created?
+
+      Select all lines that apply.
     </body>
     <code answer="3, 5">
       var x = 10;
