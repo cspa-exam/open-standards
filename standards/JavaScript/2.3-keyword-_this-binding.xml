@@ -17,7 +17,7 @@
       ```
     </body>
     <choice-group>
-      <choice answer>Alice says hello!</choice>
+      <choice answer>`"Alice says hello!"`</choice>
       <choice>None of the above; this code throws an error.</choice>
     </choice-group>
   </question>
@@ -45,8 +45,8 @@
       ```
     </body>
     <choice-group>
-      <choice>Alice says hello!</choice>
-      <choice answer>Bob says hello!</choice>
+      <choice>`"Alice says hello!"`</choice>
+      <choice answer>`"Bob says hello!"`</choice>
       <choice>None of the above; this code throws an error.</choice>
     </choice-group>
   </question>
@@ -75,8 +75,8 @@
       ```
     </body>
     <choice-group>
-      <choice>Alice says hello!</choice>
-      <choice>Bob says hello!</choice>
+      <choice>`"Alice says hello!"`</choice>
+      <choice>`"Bob says hello!"`</choice>
       <choice answer>None of the above; this code throws an error.</choice>
     </choice-group>
   </question>
@@ -101,7 +101,7 @@
       ```
     </body>
     <choice-group>
-      <choice answer>Alice says hello!</choice>
+      <choice answer>`"Alice says hello!"`</choice>
       <choice>None of the above; this code throws an error.</choice>
     </choice-group>
   </question>
@@ -126,7 +126,7 @@
       ```
     </body>
     <choice-group>
-      <choice>Alice says hello!</choice>
+      <choice>`"Alice says hello!"`</choice>
       <choice answer>None of the above; this code throws an error.</choice>
     </choice-group>
   </question>
@@ -198,13 +198,13 @@
 <group name="Function.prototype.bind">
   <question id="23008">
     <body>
-      After all code runs, what will be the final output of the console?
+      After the following code runs, what will be the value of `result`?
 
       ```js
       'use strict';
 
       function greet () {
-        console.log(this.name + " says hello!");
+        return this.name + " says hello!";
       }
 
       var alice = { name: "Alice" };
@@ -215,20 +215,20 @@
       ```
     </body>
     <choice-group>
-      <choice answer>Alice says hello!</choice>
+      <choice answer>`"Alice says hello!"`</choice>
       <choice>None of the above; this code throws an error.</choice>
     </choice-group>
   </question>
 
   <question id="23009">
     <body>
-      After all code runs, what will be the final output of the console?
+      After the following code runs, what will be the value of `result`?
 
       ```js
       'use strict';
 
       function greet () {
-        console.log(this.name + " says hello!");
+        return this.name + " says hello!";
       }
 
       var alice = { name: "Alice" };
@@ -241,21 +241,21 @@
       ```
     </body>
     <choice-group>
-      <choice answer>Alice says hello!</choice>
-      <choice>Bob says hello!</choice>
+      <choice answer>`"Alice says hello!"`</choice>
+      <choice>`"Bob says hello!"`</choice>
       <choice>None of the above; this code throws an error.</choice>
     </choice-group>
   </question>
 
   <question id="23010">
     <body>
-      After all code runs, what will be the final output of the console?
+      After the following code runs, what will be the value of `result`?
 
       ```js
       'use strict';
 
       function greet () {
-        console.log(this.name + " says hello!");
+        return this.name + " says hello!";
       }
 
       var alice = { name: "Alice" };
@@ -266,21 +266,21 @@
       ```
     </body>
     <choice-group>
-      <choice>Alice says hello!</choice>
-      <choice answer>Bob says hello!</choice>
+      <choice>`"Alice says hello!"`</choice>
+      <choice answer>`"Bob says hello!"`</choice>
       <choice>None of the above; this code throws an error.</choice>
     </choice-group>
   </question>
 
   <question id="23011">
     <body>
-      After all code runs, what will be the final output of the console?
+      After the following code runs, what will be the value of `result`?
 
       ```js
       'use strict';
 
       function greet () {
-        console.log(this.name + " says hello!");
+        return this.name + " says hello!";
       }
 
       var alice = { name: "Alice" };
@@ -294,21 +294,21 @@
       ```
     </body>
     <choice-group>
-      <choice answer>Alice says hello!</choice>
-      <choice>Bob says hello!</choice>
+      <choice answer>`"Alice says hello!"`</choice>
+      <choice>`"Bob says hello!"`</choice>
       <choice>None of the above; this code throws an error.</choice>
     </choice-group>
   </question>
 
   <question id="23012">
     <body>
-      After all code runs, what will be the final output of the console?
+      After the following code runs, what will be the value of `result`?
 
       ```js
       'use strict';
 
       function greet () {
-        console.log(this.name + " says hello!");
+        return this.name + " says hello!";
       }
 
       var alice = { name: "Alice" };
@@ -319,8 +319,8 @@
       ```
     </body>
     <choice-group>
-      <choice>Alice says hello!</choice>
-      <choice>Bob says hello!</choice>
+      <choice>`"Alice says hello!"`</choice>
+      <choice>`"Bob says hello!"`</choice>
       <choice answer>None of the above; this code throws an error.</choice>
     </choice-group>
   </question>

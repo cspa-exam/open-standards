@@ -60,7 +60,7 @@
 <group name="Variable Hoisting">
   <question id="13003">
     <body>
-      When running `foo()`, what will be the value of `result`?
+      After the following code runs, what will be the value of `result`?
 
       ```js
       function foo () {
@@ -84,7 +84,7 @@
 <group name="Hoisting in Function Scopes">
   <question id="13004">
     <body>
-      When running `foo()`, what will be the value of `result`?
+      After the following code runs, what will be the value of `result`?
 
       ```js
       function foo () {
