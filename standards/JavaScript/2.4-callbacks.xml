@@ -113,12 +113,11 @@
 <group name="Consuming Callbacks">
   <question type="short-coding" id="24004">
     <body>
-      Complete the function `foo` such that the tests pass.
+      Complete the function `foo` such that the following spec passes.
     </body>
     <given-code>
       function foo (f) {
         // Complete me
-        return f() * 2
       }
     </given-code>
     <test>
@@ -137,7 +136,7 @@
 
   <question type="short-coding" id="24005">
     <body>
-      Complete the function `foo` such that the tests pass.
+      Complete the function `foo` such that the following spec passes.
     </body>
     <given-code>
       function foo (b, f) {

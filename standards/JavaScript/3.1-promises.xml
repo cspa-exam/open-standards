@@ -76,10 +76,10 @@
       ```
     </body>
     <choice-group>
-      <choice>`'Alice!'`</choice>
-      <choice answer>A promise that resolves with `'Alice!'`</choice>
-      <choice>`{ name: 'Alice!' }`</choice>
-      <choice>A promise that resolves with `{ name: 'Alice!' }`</choice>
+      <choice>`'Alice'`</choice>
+      <choice answer>A promise that resolves with `'Alice'`</choice>
+      <choice>`{ name: 'Alice' }`</choice>
+      <choice>A promise that resolves with `{ name: 'Alice' }`</choice>
       <choice>`undefined`</choice>
       <choice>A promise that resolves with `undefined`</choice>
     </choice-group>
@@ -351,7 +351,7 @@
       - `findEmail(3)` resolves with `{ content: "hi", user_id: 7 }`
       - `findEmail(999)` rejects with `"not_found"`
 
-      - `findUser(7)` resolves with `{ name: "Bob" }`
+      - `findUser(7)` resolves with `{ id: 7, name: "Bob" }`
       - `findUser(888)` rejects with `"not_found"`
 
       After all promises resolve, what will be the value of result?
@@ -365,7 +365,7 @@
     </body>
     <choice-group>
       <choice>A promise that resolves with `{ content: "hi", user_id: 7 }`</choice>
-      <choice answer>A promise that resolves with `{ name: "Bob" }`</choice>
+      <choice answer>A promise that resolves with `{ id: 7, name: "Bob" }`</choice>
       <choice>A promise that resolves with `"Bob"`</choice>
       <choice>A promise that resolves with `7`</choice>
     </choice-group>
@@ -378,7 +378,7 @@
       - `findEmail(3)` resolves with `{ content: "hi", user_id: 7 }`
       - `findEmail(999)` rejects with `"not_found"`
 
-      - `findUser(7)` resolves with `{ name: "Bob" }`
+      - `findUser(7)` resolves with `{ id: 7, name: "Bob" }`
       - `findUser(888)` rejects with `"not_found"`
 
       After all promises resolve, what will be the value of result?
@@ -395,7 +395,7 @@
     </body>
     <choice-group>
       <choice>A promise that resolves with `{ content: "hi", user_id: 7 }`</choice>
-      <choice>A promise that resolves with `{ name: "Bob" }`</choice>
+      <choice>A promise that resolves with `{ id: 7, name: "Bob" }`</choice>
       <choice>A promise that resolves with `"Bob"`</choice>
       <choice answer>A promise that resolves with `7`</choice>
     </choice-group>

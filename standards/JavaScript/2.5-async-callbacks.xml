@@ -4,18 +4,18 @@
       After all code and callbacks run, what will be the value of `result`?
 
       ```js
-      var result = 'A';
+      var result = "A";
 
       setTimeout(function () {
-        result += 'B';
+        result += " B";
       }, 0)
 
-      result += 'C';
+      result += " C";
       ```
     </body>
     <choice-group>
-      <choice>ABC</choice>
-      <choice answer>ACB</choice>
+      <choice>`A B C`</choice>
+      <choice answer>`A C B`</choice>
     </choice-group>
   </question>
 
@@ -24,16 +24,16 @@
       After all code and callbacks run, what will be the value of `result`?
 
       ```js
-      var result = 'A';
+      var result = "A";
       setTimeout(function () {
-        result += ' B';
+        result += " B";
       }, 1000);
 
       setTimeout(function () {
-        result += ' C';
+        result += " C";
       }, 0);
 
-      result += ' D';
+      result += " D";
       ```
     </body>
     <choice-group>
@@ -51,17 +51,17 @@
       After all code and callbacks run, what will be the value of `result`?
 
       ```js
-      var result = 'A';
+      var result = "A";
       setTimeout(function () {
-        result += ' B';
+        result += " B";
 
         setTimeout(function () {
-          result += ' C';
+          result += " C";
         }, 0);
       }, 0);
 
       setTimeout(function () {
-        result += ' D';
+        result += " D";
       }, 0);
       ```
     </body>
@@ -80,8 +80,6 @@
   <question id="25003">
     <body>
       After all code and callbacks run, what will be the value of result?
-
-      Pay close attention to detail.
 
       ```js
       var result = "A";
@@ -110,8 +108,6 @@
   <question id="25004">
     <body>
       After all code and callbacks run, what will be the value of result?
-
-      Pay close attention to detail.
 
       ```js
       var result = "A";
@@ -188,6 +184,8 @@
       After all code and callbacks run, what will be the output of the console?
 
       ```js
+      'use strict';
+
       var alice = {
         name: "Alice",
         greet: function () {
@@ -202,7 +200,7 @@
     </body>
     <choice-group>
       <choice answer>`Alice says hello`</choice>
-      <choice>`undefined says hello`</choice>
+      <choice>None of the above; this code throws an error.</choice>
     </choice-group>
   </question>
 
@@ -211,6 +209,8 @@
       After all code and callbacks run, what will be the output of the console?
 
       ```js
+      'use strict';
+
       var alice = {
         name: "Alice",
         greet: function () {
@@ -223,7 +223,7 @@
     </body>
     <choice-group>
       <choice>`Alice says hello`</choice>
-      <choice answer>`undefined says hello`</choice>
+      <choice answer>None of the above; this code throws an error.</choice>
     </choice-group>
   </question>
 
@@ -232,6 +232,8 @@
       After all code and callbacks run, what will be the output of the console?
 
       ```js
+      'use strict';
+
       var alice = {
         name: "Alice",
         greet: function () {
@@ -244,7 +246,7 @@
     </body>
     <choice-group>
       <choice answer>`Alice says hello`</choice>
-      <choice>`undefined says hello`</choice>
+      <choice>None of the above; this code throws an error.</choice>
     </choice-group>
   </question>
 </group>
@@ -252,20 +254,24 @@
 <group name="Advanced Patterns">
   <question type="short-coding" id="25005">
     <body>
-      You have access to a function `getHobbies` which takes two parameters:
+      You are given a function named `queryHobbiesAPI` that takes two parameters:
 
       1. A target username (as a string)
       2. A callback
 
-      `getHobbies` asynchronously calls *your* callback with *an array of strings*, where
+      `queryHobbiesAPI` asynchronously calls *your* callback with *an array of strings*, where
       each string represents a hobby of that user.
 
-      Write an callback style function `getAllHobbies` that takes two parameters:
+      ### Objective
+
+      Your task is to write an callback style function `getHobbies` that takes two parameters:
 
       1. A list of usernames (as an array of strings)
       2. A callback
 
       and returns a *sorted* array of **all** hobbies from **all** given users.
+
+      You should use `queryHobbiesAPI` in your solution.
 
       ### Example
 
@@ -276,7 +282,7 @@
       Then the following code...
 
       ```js
-      getAllHobbies(["user_1", "user_2", "user_3"], function (results) {
+      getHobbies(["user_1", "user_2", "user_3"], function (results) {
         console.log("Results:", results)
       })
       ```
@@ -289,50 +295,50 @@
     </body>
 
     <given-code>
-      function getAllHobbies (usernames, callback) {
+      function getHobbies (usernames, callback) {
         // Complete me
       };
     </given-code>
     <test-setup>
       var hobbies = {
-        user_1: ['a','b'],
-        user_2: ['x','y'],
-        user_3: ['h'],
-        user_4: ['d','c','k','j'],
+        user_1: ["a","b"],
+        user_2: ["x","y"],
+        user_3: ["h"],
+        user_4: ["d","c","k","j"],
         user_5: [],
       };
-      function getHobbies (username, cb) {
+      function queryHobbiesAPI (username, cb) {
         setTimeout(function () {
           cb(hobbies[username])
         }, Math.round(Math.random() * 3))
       }
     </test-setup>
     <test>
-      getAllHobbies(["user_1", "user_2", "user_3"], (results) => {
+      getHobbies(["user_1", "user_2", "user_3"], (results) => {
         assert.deepEqual(results, ["a", "b", "h", "x", "y"]);
         assert.pass();
       });
     </test>
     <test>
-      getAllHobbies(["user_4", "user_3"], (results) => {
+      getHobbies(["user_4", "user_3"], (results) => {
         assert.deepEqual(results, ["c", "d", "h", "j", "k"]);
         assert.pass();
       });
     </test>
     <test title="With a single user">
-      getAllHobbies(["user_4"], (results) => {
+      getHobbies(["user_4"], (results) => {
         assert.deepEqual(results, ["c", "d", "j", "k"]);
         assert.pass();
       });
     </test>
     <test title="With a hobby-less user">
-      getAllHobbies(["user_2", "user_5"], (results) => {
+      getHobbies(["user_2", "user_5"], (results) => {
         assert.deepEqual(results, ["x", "y"]);
         assert.pass();
       });
     </test>
     <test title="With only a hobby-less user">
-      getAllHobbies(["user_5"], (results) => {
+      getHobbies(["user_5"], (results) => {
         assert.deepEqual(results, []);
         assert.pass();
       });

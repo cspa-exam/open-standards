@@ -316,7 +316,7 @@
       var b = {};
       b.x = a.x;
 
-      delete b.x
+      delete b.x;
 
       var result = a.x;
       ```
@@ -339,7 +339,7 @@
       var b = {};
       b.inner = a.inner;
 
-      delete b.inner
+      delete b.inner;
 
       var result = a.inner.x;
       ```
@@ -363,7 +363,7 @@
       var b = {};
       b.inner = a.inner;
 
-      delete b.inner.x
+      delete b.inner.x;
 
       var result = a.inner.x;
       ```
