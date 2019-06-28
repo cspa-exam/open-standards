@@ -1,0 +1,50 @@
+<group name="Intro">
+  <question id="32000">
+    <body>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      function f () {
+        return typeof arguments;
+      }
+
+      var result = f();
+      ```
+    </body>
+    <choice-group>
+      <choice answer>`object`</choice>
+      <choice>`array`</choice>
+      <choice>`undefined`</choice>
+      <choice>None of the above; this code throws an error.</choice>
+    </choice-group>
+  </question>
+
+  <question id="32001">
+    <body>
+      After the following code runs, what will be the value of `result`?
+
+      ```js
+      function wrap (f) {
+        return function () {
+          console.log("Calling with:", arguments);
+          return f.apply(this, arguments);
+        };
+      }
+
+      function add (x, y) {
+        return x + y;
+      }
+
+      var g = wrap(add);
+      var result = g(10, 20);
+      ```
+    </body>
+    <choice-group>
+      <choice>`0`</choice>
+      <choice answer>`30`</choice>
+      <choice>`[10, 20]`</choice>
+      <choice>`undefined`</choice>
+      <choice>None of the above; this code throws an error.</choice>
+    </choice-group>
+  </question>
+</group>
