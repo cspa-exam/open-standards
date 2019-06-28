@@ -10,6 +10,8 @@ Key points to keep in mind:
 
 And finally, this set does not test every single little aspect of JavaScript. Instead, it intends to cover difficult but fundamental concepts, as well as common pitfalls of the language.
 
+**Minor Note**: Questions in parts 1-4 are all written in ES5. Newer langauge features are great; they are primarily covered in part 5.
+
 ## Topics Covered
 
 ### Part 1
